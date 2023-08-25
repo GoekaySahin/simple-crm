@@ -3,12 +3,12 @@
     <div class="logo-menu">platz für logo</div>
 
     <ul>
-      <li>
+      <li [routerLink]="['/']">
         <mat-icon
           ><span class="material-symbols-outlined"> fact_check </span></mat-icon
         >Dashboard
       </li>
-      <li><mat-icon>person</mat-icon>User</li>
+      <li [routerLink]="['/user']"><mat-icon>person</mat-icon>User</li>
     </ul>
   </mat-drawer>
 
@@ -17,5 +17,8 @@
       <mat-icon (click)="drawer.toggle()">menu</mat-icon>
       <span>Simple CRM</span>
     </mat-toolbar>
+  </div>
+  <div class="router-container">
+    <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>

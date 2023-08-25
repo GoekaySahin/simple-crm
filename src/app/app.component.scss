@@ -18,7 +18,7 @@
 }
 
 .logo-menu {
-  border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+  border-bottom: 1px solid rgb(182 181 181 / 11%);
   padding: 0 16px;
   height: 55px;
   display: flex;
@@ -43,7 +43,12 @@ ul {
     }
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.018);
+      background-color: rgb(182 181 181 / 11%);
     }
   }
+}
+
+.router-container {
+  padding-left: 56px;
+  padding-top: 16px;
 }
