@@ -3,3 +3,34 @@
   right: 56px;
   bottom: 56px;
 }
+
+table {
+  border-collapse: collapse;
+
+  tr {
+    &:first-child {
+      cursor: unset;
+      &:hover {
+        background-color: unset;
+      }
+    }
+
+    th {
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+      font-size: 16px;
+      text-align: left;
+      padding: 12px 14px;
+    }
+
+    td {
+      cursor: pointer;
+      padding: 10px 16px 10px;
+      border-top: 1px solid black;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.157);
+    }
+  }
+}

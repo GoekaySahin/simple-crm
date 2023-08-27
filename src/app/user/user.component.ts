@@ -1,6 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
+import { User } from "../models/user.class";
+import { Observable } from "rxjs";
+import { Firestore, collection, collectionData } from "@angular/fire/firestore";
 
 @Component({
   selector: "app-user",
@@ -8,8 +11,7 @@ import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.compo
   styleUrls: ["./user.component.scss"],
 })
 export class UserComponent {
-  animal: string | undefined;
-  name: string | undefined;
+  user: User = new User();
 
   constructor(public dialog: MatDialog) {}
 

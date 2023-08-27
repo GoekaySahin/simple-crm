@@ -13,6 +13,23 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { DialogAddUserComponent } from "./dialog-add-user/dialog-add-user.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { FormsModule } from "@angular/forms";
+import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { environment } from "../environments/environment";
+import { provideDatabase, getDatabase } from "@angular/fire/database";
+import {
+  provideFirestore,
+  getFirestore,
+  FirestoreModule,
+} from "@angular/fire/firestore";
+import { provideFunctions, getFunctions } from "@angular/fire/functions";
+import { provideStorage, getStorage } from "@angular/fire/storage";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -31,6 +48,20 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage()),
+    FirestoreModule,
+    MatProgressBarModule,
+    MatCardModule,
   ],
 
   providers: [],
