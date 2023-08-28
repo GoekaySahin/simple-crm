@@ -1,0 +1,41 @@
+.user-head {
+  position: relative;
+  padding: 16px;
+  width: 100%;
+  min-height: 250px;
+  background-color: #28d9ff;
+  color: white;
+  justify-content: end;
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+    background-color: white;
+  }
+
+  .user-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+}
+
+.user-detail {
+  position: relative;
+  padding: 16px;
+  width: 100%;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}

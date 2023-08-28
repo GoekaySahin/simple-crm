@@ -29,6 +29,20 @@
       </mat-form-field>
     </div>
 
+    <div class="email-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter Email</mat-label>
+        <input
+          [disabled]="loading"
+          [(ngModel)]="user.email"
+          #ctrl="ngModel"
+          required
+          matInput
+          placeholder="Email"
+        />
+      </mat-form-field>
+    </div>
+
     <div class="birth-date">
       <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Choose a date</mat-label>
@@ -47,7 +61,12 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #datepicker>
           <mat-datepicker-actions>
-            <button [disabled]="loading" mat-button matDatepickerCancel>
+            <button
+              [disabled]="loading"
+              mat-button
+              matDatepickerCancel
+              (click)="this.closeDialogUsers()"
+            >
               Cancel
             </button>
             <button

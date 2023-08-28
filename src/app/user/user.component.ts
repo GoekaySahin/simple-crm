@@ -13,6 +13,8 @@ import {
   setDoc,
   onSnapshot,
   getFirestore,
+  DocumentData,
+  getDocs,
 } from "@angular/fire/firestore";
 import { initializeApp } from "firebase/app";
 import { environment } from "@environments/environment";
@@ -28,12 +30,23 @@ export class UserComponent {
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
-
+  allUsers = [];
   constructor(public dialog: MatDialog) {}
 
   async ngOnInit() {
-    const unsub = onSnapshot(doc(this.db, "user", "idUser"), (doc) => {
-      console.log("Current data: ", doc.data());
+    const unsub = onSnapshot(collection(this.db, "users"), (querySnapshot) => {
+      const usersData: User[] = [];
+
+      querySnapshot.forEach((doc) => {
+        if (doc.exists()) {
+          const userData = doc.data() as User;
+          userData.id = doc.id;
+          usersData.push(userData);
+        }
+      });
+
+      this.allUsers = usersData;
+      console.log(usersData);
     });
   }
 

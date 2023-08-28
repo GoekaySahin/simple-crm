@@ -32,10 +32,13 @@ export class DialogAddUserComponent {
     this.user.birthDate = this.birthDate.getTime();
     console.log(this.user);
     this.loading = true;
-    const aCollection = collection(this.firestore, "user");
-    await setDoc(doc(aCollection, "idUser"), this.user.toJSON()); // Die klasse muss in eine JSON umgewandelt werden (Manuel im models  )
+    const aCollection = collection(this.firestore, "users");
+    await setDoc(doc(aCollection), this.user.toJSON()); // Die klasse muss in eine JSON umgewandelt werden (Manuel im models  )
     this.loading = false;
-    this.dialogRef.close();
+    this.closeDialogUsers();
     console.log("Benutzerdaten erfolgreich gespeichert.");
+  }
+  closeDialogUsers() {
+    this.dialogRef.close();
   }
 }

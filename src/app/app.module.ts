@@ -30,6 +30,7 @@ import { provideFunctions, getFunctions } from "@angular/fire/functions";
 import { provideStorage, getStorage } from "@angular/fire/storage";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from "@angular/material/card";
+import { UserDetailComponent } from "./user-detail/user-detail.component";
 
 @NgModule({
   declarations: [
@@ -37,12 +38,14 @@ import { MatCardModule } from "@angular/material/card";
     DashboardComponent,
     UserComponent,
     DialogAddUserComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    MatCardModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
@@ -61,7 +64,6 @@ import { MatCardModule } from "@angular/material/card";
     provideStorage(() => getStorage()),
     FirestoreModule,
     MatProgressBarModule,
-    MatCardModule,
   ],
 
   providers: [],
