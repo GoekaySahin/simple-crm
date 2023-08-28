@@ -11,6 +11,7 @@ import { Observable } from "rxjs";
 import { doc, setDoc } from "firebase/firestore";
 import { firebaseConfig } from "@environments/firebase-config";
 import { initializeApp } from "@angular/fire/app";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-dialog-add-user",
@@ -25,8 +26,12 @@ export class DialogAddUserComponent {
   loading = false;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
+  userId;
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<DialogAddUserComponent>,
+    public route: ActivatedRoute
+  ) {}
 
   async saveUser() {
     this.user.birthDate = this.birthDate.getTime();

@@ -42,6 +42,7 @@ export class UserComponent {
           const userData = doc.data() as User;
           userData.id = doc.id;
           usersData.push(userData);
+          console.log(userData);
         }
       });
 
