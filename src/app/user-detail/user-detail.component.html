@@ -1,14 +1,42 @@
 <mat-card class="user-head">
+  <button
+    class="edit"
+    [matMenuTriggerFor]="menuName"
+    mat-icon-button
+    aria-label="Example icon button with a vertical three dot icon"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menuName="matMenu">
+    <button mat-menu-item (click)="editMenu()">edit</button>
+  </mat-menu>
   <div class="user-content">
     <img src="../../assets/img/user-pic.png" />
     <div class="user-data">
-      <h2>{{ this.user.firstName }}{{ this.user.lastName }}</h2>
-      <span>email@email.de</span>
+      <h2>{{ user.firstName }}{{ user.lastName }}</h2>
+      <span>{{ user.email }}</span>
     </div>
   </div>
 </mat-card>
 
 <mat-card class="user-detail mt-32">
+  <!--   <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    fontIcon="more_ver"
+   
+    >t</mat-icon -->
+  <button
+    class="edit"
+    [matMenuTriggerFor]="menu"
+    mat-icon-button
+    aria-label="Example icon button with a vertical three dot icon"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="editAddress()">edit</button>
+  </mat-menu>
   <mat-card-title>Address</mat-card-title>
   <mat-card-content>
     {{ this.user.street }} <br />

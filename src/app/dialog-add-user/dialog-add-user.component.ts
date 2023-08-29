@@ -43,6 +43,7 @@ export class DialogAddUserComponent {
     this.closeDialogUsers();
     console.log("Benutzerdaten erfolgreich gespeichert.");
   }
+
   closeDialogUsers() {
     this.dialogRef.close();
   }

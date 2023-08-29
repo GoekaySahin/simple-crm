@@ -13,6 +13,8 @@ import { ActivatedRoute } from "@angular/router";
 import { firebaseConfig } from "@environments/firebase-config";
 import { Observable, Subscribable } from "rxjs";
 import { User } from "../models/user.class";
+import { DialogEditAddressComponent } from "../dialog-edit-address/dialog-edit-address.component";
+import { DialogEditUserComponent } from "../dialog-edit-user/dialog-edit-user.component";
 
 @Component({
   selector: "app-user-detail",
@@ -28,6 +30,7 @@ export class UserDetailComponent {
   userRef;
   unsubscribe;
   user = new User(); // wenn ich es nicht in eine klasse packe geht es zwar aber die konsole schmeißt ganze Zeit einen Fehler!
+  loading = false;
 
   constructor(public dialog: MatDialog, public route: ActivatedRoute) {
     this.route.paramMap.subscribe((paramMap) => {
@@ -42,5 +45,17 @@ export class UserDetailComponent {
       console.log("dok: ", docSnapshot.data());
       this.user = new User(docSnapshot.data());
     });
+  }
+
+  editMenu() {
+    const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = new User(this.user);
+    dialog.componentInstance.userId = this.userId;
+  }
+
+  editAddress() {
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user);
+    dialog.componentInstance.userId = this.userId;
   }
 }
