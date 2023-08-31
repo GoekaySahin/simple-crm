@@ -8,16 +8,11 @@ import { firebaseConfig } from "@environments/firebase-config";
 import {
   Firestore,
   collection,
-  collectionData,
-  doc,
-  setDoc,
   onSnapshot,
   getFirestore,
-  DocumentData,
-  getDocs,
 } from "@angular/fire/firestore";
 import { initializeApp } from "firebase/app";
-import { environment } from "@environments/environment";
+import { AppComponent } from "../app.component";
 
 @Component({
   selector: "app-user",
@@ -31,7 +26,17 @@ export class UserComponent {
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   allUsers = [];
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private appComponent: AppComponent) {
+    this.setUserdToShow();
+  }
+
+  setUserdToShow() {
+    this.appComponent.dashboardPage = false;
+    this.appComponent.privacyPage = false;
+    this.appComponent.imprintPage = false;
+    this.appComponent.costumerPage = false;
+    this.appComponent.userPage = true;
+  }
 
   async ngOnInit() {
     const unsub = onSnapshot(collection(this.db, "users"), (querySnapshot) => {

@@ -1,5 +1,10 @@
 <mat-drawer-container class="example-container h100" autosize>
-  <mat-drawer #drawer class="example-sidenav" [opened]="true" mode="side">
+  <mat-drawer
+    #drawer
+    class="example-sidenav box-shadow"
+    [opened]="true"
+    mode="side"
+  >
     <div class="logo-menu">
       <img src="../assets/img/logo-crm.png" class="logo" />
     </div>
@@ -11,13 +16,20 @@
         >Dashboard
       </li>
       <li [routerLink]="['/user']"><mat-icon>person</mat-icon>User</li>
+      <li [routerLink]="['/costumer']">
+        <mat-icon>handshake</mat-icon>costumer
+      </li>
     </ul>
   </mat-drawer>
 
   <div class="example-sidenav-content d-flex">
     <mat-toolbar>
       <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-      <span>Simple CRM</span>
+      <span *ngIf="dashboardPage">Dashboard</span>
+      <span *ngIf="userPage">User`s</span>
+      <span *ngIf="costumerPage">Costumer`s</span>
+      <span *ngIf="imprintPage">Imprint</span>
+      <span *ngIf="privacyPage">Privacy</span>
     </mat-toolbar>
   </div>
   <div class="router-container">
