@@ -1,10 +1,10 @@
 .mdc-fab {
   position: absolute;
   right: 56px;
-  top: 8px;
+  top: 14px;
   background-color: #48aaf9;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 table {
@@ -17,6 +17,7 @@ table {
       cursor: unset;
       &:hover {
         background-color: unset;
+        border: initial;
       }
     }
 
@@ -25,17 +26,22 @@ table {
       font-weight: 500;
       font-size: 16px;
       text-align: left;
-      padding: 12px 14px;
+      padding: 25px 14px 15px;
     }
 
     td {
       cursor: pointer;
-      padding: 10px 16px 10px;
-      border-top: 1px solid black;
+      padding: 20px 16px 10px;
+      border-top: 1px solid #7e6868d9;
     }
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.157);
+      border: 1px solid #7e6868d9;
     }
   }
+}
+
+.pad8 {
+  padding: 0px 8px;
 }

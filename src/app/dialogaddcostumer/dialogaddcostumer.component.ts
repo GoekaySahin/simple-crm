@@ -15,7 +15,6 @@ import { ActivatedRoute } from "@angular/router";
 import { Costumer } from "../models/costumer.class";
 import { CostumersComponent } from "../costumers/costumers.component";
 import { AppComponent } from "../app.component";
-import { ServicesService } from "../services.service"; // Pfad anpassen
 
 @Component({
   selector: "app-dialogaddcostumer",

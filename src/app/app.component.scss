@@ -17,7 +17,9 @@
 }
 
 .example-sidenav {
-  width: 300px;
+  width: 250px;
+  font-size: 16px;
+  letter-spacing: 1.2px;
 }
 
 .logo-menu {
@@ -32,7 +34,7 @@
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 10px 20px;
 
   li {
     display: flex;
@@ -54,8 +56,7 @@ ul {
 }
 
 .router-container {
-  padding: 0 56px;
-  padding-top: 16px;
+  padding: 40px 56px;
 }
 
 .logo {
