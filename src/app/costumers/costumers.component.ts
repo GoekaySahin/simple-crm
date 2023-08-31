@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, ElementRef, ViewChild, inject } from "@angular/core";
 import { AppComponent } from "../app.component";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
@@ -21,12 +21,14 @@ import { DialogaddcostumerComponent } from "../dialogaddcostumer/dialogaddcostum
   styleUrls: ["./costumers.component.scss"],
 })
 export class CostumersComponent {
+  @ViewChild("myButton") myButton: ElementRef;
   costumer: Costumer = new Costumer();
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   allCostumer = [];
+  topValue = 200;
 
   constructor(private appComponent: AppComponent, public dialog: MatDialog) {
     this.setCustomerToShow();
@@ -60,7 +62,7 @@ export class CostumersComponent {
     );
   }
 
-  openDialog() {
+  openDialogCostumer() {
     const dialogRef = this.dialog.open(DialogaddcostumerComponent);
   }
 }

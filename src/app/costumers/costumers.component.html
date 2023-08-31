@@ -1,29 +1,34 @@
-<mat-card>
-  <mat-card-content>
-    <table>
-      <tr>
-        <th>Name and Contactperson</th>
-        <th>E-mail</th>
-        <th>Street</th>
-        <th>City</th>
-      </tr>
-      <tr
-        *ngFor="let costumer of allCostumer"
-        [routerLink]="['/costumer/' + costumer.id]"
-      >
-        <td>{{ costumer.name }}, {{ costumer.contactperson }}</td>
-        <td>{{ costumer.city }}</td>
-        <td>{{ costumer.zipCode }}</td>
-      </tr>
-    </table>
-  </mat-card-content>
-</mat-card>
+<div class="costumer-table">
+  <mat-card>
+    <mat-card-content class="mat-padding0">
+      <table>
+        <tr>
+          <th>Name and Contactperson</th>
+          <th>E-mail</th>
+          <th>City</th>
+          <th>Contactperson</th>
+        </tr>
+        <tr
+          *ngFor="let costumer of allCostumer"
+          [routerLink]="['/costumer/' + costumer.id]"
+        >
+          <td>{{ costumer.name }}</td>
+          <td>{{ costumer.email }}</td>
+          <td>{{ costumer.city }}</td>
+          <td>{{ costumer.contactperson }}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
 
-<button
-  (click)="openDialog()"
-  mat-fab
-  color="primary"
-  aria-label="Example icon button with a delete icon"
->
-  <mat-icon>add</mat-icon>
-</button>
+  <button
+    #btn
+    class="btn"
+    (click)="openDialogCostumer()"
+    mat-fab
+    color="primary"
+    aria-label="Example icon button with a delete icon"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

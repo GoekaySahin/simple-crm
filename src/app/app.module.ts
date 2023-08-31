@@ -13,7 +13,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { DialogAddUserComponent } from "./dialog-add-user/dialog-add-user.component";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import {
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MatFormFieldModule,
+} from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
@@ -32,10 +35,10 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from "@angular/material/card";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
 import { MatMenuModule } from "@angular/material/menu";
-import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
-import { CostumersComponent } from './costumers/costumers.component';
-import { DialogaddcostumerComponent } from './dialogaddcostumer/dialogaddcostumer.component';
+import { DialogEditAddressComponent } from "./dialog-edit-address/dialog-edit-address.component";
+import { DialogEditUserComponent } from "./dialog-edit-user/dialog-edit-user.component";
+import { CostumersComponent } from "./costumers/costumers.component";
+import { DialogaddcostumerComponent } from "./dialogaddcostumer/dialogaddcostumer.component";
 
 @NgModule({
   declarations: [

@@ -2,7 +2,7 @@
   <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
   <h1 mat-dialog-title>Add User</h1>
-  <div mat-dialog-content>
+  <div mat-dialog-content class="tabble-padding">
     <p>Please add user Name</p>
     <div class="input-fields gap-16">
       <mat-form-field appearance="outline">
@@ -13,7 +13,6 @@
           #ctrl="ngModel"
           required
           matInput
-          placeholder="Firstname"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -24,7 +23,6 @@
           #ctrl="ngModel"
           required
           matInput
-          placeholder="Lastname"
         />
       </mat-form-field>
     </div>
@@ -38,7 +36,6 @@
           #ctrl="ngModel"
           required
           matInput
-          placeholder="Email"
         />
       </mat-form-field>
     </div>
@@ -104,7 +101,6 @@
           #ctrl="ngModel"
           required
           matInput
-          placeholder="City"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -115,13 +111,12 @@
           #ctrl="ngModel"
           required
           matInput
-          placeholder="zip"
         />
       </mat-form-field>
     </div>
   </div>
   <div mat-dialog-actions>
     <button (click)="saveUser()" mat-button>add</button>
-    <button mat-button>Cancel</button>
+    <button mat-button (click)="closeDialogUsers()">Cancel</button>
   </div>
 </div>

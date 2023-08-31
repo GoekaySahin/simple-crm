@@ -1,14 +1,72 @@
 <div class="add-costumer-content">
-  <h1 mat-dialog-title>Hi</h1>
-  <div mat-dialog-content>
-    <p>What's your favorite animal?</p>
-    <mat-form-field>
-      <mat-label>Favorite Animal</mat-label>
-      <input matInput />
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <h1 mat-dialog-title>Add a new Company</h1>
+  <div mat-dialog-content class="tabble-padding">
+    <p>Please Enter Name and Contactperson</p>
+    <p>
+      <mat-form-field appearance="outline" class="w100">
+        <mat-label>Company Name</mat-label>
+        <input matInput [disabled]="loading" [(ngModel)]="costumer.name" />
+      </mat-form-field>
+    </p>
+  </div>
+  <div mat-dialog-content class="tabble-padding">
+    <p>Please enter address</p>
+    <p class="gap">
+      <mat-form-field appearance="outline">
+        <mat-label>Company street</mat-label>
+        <input
+          matInput
+          required
+          [disabled]="loading"
+          [(ngModel)]="costumer.street"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>City and zip-code</mat-label>
+        <input
+          matInput
+          required
+          [disabled]="loading"
+          [(ngModel)]="costumer.city"
+        />
+      </mat-form-field>
+    </p>
+  </div>
+  <div mat-dialog-content class="tabble-padding">
+    <p>Please enter email and notice</p>
+    <p class="gap">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          required
+          [disabled]="loading"
+          [(ngModel)]="costumer.email"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Contactperson</mat-label>
+        <input
+          matInput
+          [disabled]="loading"
+          [(ngModel)]="costumer.contactperson"
+        />
+      </mat-form-field>
+    </p>
+    <p>Comments</p>
+    <mat-form-field appearance="outline" class="w100">
+      <mat-label>Textarea</mat-label>
+      <textarea
+        matInput
+        [disabled]="loading"
+        [(ngModel)]="costumer.notice"
+      ></textarea>
     </mat-form-field>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button>No Thanks</button>
-    <button mat-button cdkFocusInitial>Ok</button>
+  <div mat-dialog-actions class="btn-correct">
+    <button mat-button cdkFocusInitial (click)="saveCostumer()">Add</button>
+    <button mat-button (click)="closeDialogCostumer()">Cancel</button>
   </div>
 </div>
