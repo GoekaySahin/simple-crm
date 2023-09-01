@@ -1,0 +1,23 @@
+<div class="dialogName">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div mat-dialog-content>
+    <p>Please add costumer Name</p>
+    <div class="input-fields gap-16">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter firstname</mat-label>
+        <input
+          [disabled]="loading"
+          [(ngModel)]="costumer.name"
+          #ctrl="ngModel"
+          required
+          matInput
+          placeholder="Firstname"
+        />
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button (click)="saveCostumer()" mat-button>add</button>
+      <button mat-button>Cancel</button>
+    </div>
+  </div>
+</div>

@@ -2,16 +2,14 @@ import { Component, inject } from "@angular/core";
 import { initializeApp } from "@angular/fire/app";
 import {
   Firestore,
-  collection,
   doc,
-  docSnapshots,
   getFirestore,
   onSnapshot,
 } from "@angular/fire/firestore";
 import { MatDialog } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
 import { firebaseConfig } from "@environments/firebase-config";
-import { Observable, Subscribable } from "rxjs";
+import { Observable } from "rxjs";
 import { User } from "../models/user.class";
 import { DialogEditAddressComponent } from "../dialog-edit-address/dialog-edit-address.component";
 import { DialogEditUserComponent } from "../dialog-edit-user/dialog-edit-user.component";

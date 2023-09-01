@@ -39,6 +39,10 @@ import { DialogEditAddressComponent } from "./dialog-edit-address/dialog-edit-ad
 import { DialogEditUserComponent } from "./dialog-edit-user/dialog-edit-user.component";
 import { CostumersComponent } from "./costumers/costumers.component";
 import { DialogaddcostumerComponent } from "./dialogaddcostumer/dialogaddcostumer.component";
+import { DialogEditCostumerComponent } from "./dialog-edit-costumer/dialog-edit-costumer.component";
+import { CostumerDetailComponent } from "./costumer-detail/costumer-detail.component";
+import { DialogEditCostumerAddressComponent } from "./dialog-edit-costumer-address/dialog-edit-costumer-address.component";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,10 @@ import { DialogaddcostumerComponent } from "./dialogaddcostumer/dialogaddcostume
     DialogEditUserComponent,
     CostumersComponent,
     DialogaddcostumerComponent,
+    DialogEditCostumerComponent,
+    CostumerDetailComponent,
+    DialogEditCostumerAddressComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +67,7 @@ import { DialogaddcostumerComponent } from "./dialogaddcostumer/dialogaddcostume
     MatToolbarModule,
     MatCardModule,
     MatSidenavModule,
+
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,

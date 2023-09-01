@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import { User } from "../models/user.class";
+import { Costumer } from "../models/costumer.class";
 import {
   Firestore,
   doc,
@@ -14,19 +14,19 @@ import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
 
 @Component({
-  selector: "app-dialog-edit-address",
-  templateUrl: "./dialog-edit-address.component.html",
-  styleUrls: ["./dialog-edit-address.component.scss"],
+  selector: "app-dialog-edit-costumer-address",
+  templateUrl: "./dialog-edit-costumer-address.component.html",
+  styleUrls: ["./dialog-edit-costumer-address.component.scss"],
 })
-export class DialogEditAddressComponent {
-  userId: string;
+export class DialogEditCostumerAddressComponent {
+  costumerId: string;
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
-  userRef;
+  costumerRef;
   unsubscribe;
-  user = new User(); // wenn ich es nicht in eine klasse packe geht es zwar aber die konsole schmeißt ganze Zeit einen Fehler!
+  costumer = new Costumer(); // wenn ich es nicht in eine klasse packe geht es zwar aber die konsole schmeißt ganze Zeit einen Fehler!
   loading = false;
 
   constructor(
@@ -39,10 +39,10 @@ export class DialogEditAddressComponent {
     this.dialogRef.close();
   }
 
-  async saveUser() {
+  async saveCostumer() {
     this.loading = true;
-    const userRef = doc(this.db, "users", this.userId);
-    await updateDoc(userRef, this.user.toJSON());
+    const costumerRef = doc(this.db, "costumer", this.costumerId);
+    await updateDoc(costumerRef, this.costumer.toJSON());
     console.log("Daten erfolgreich aktualisiert!");
     this.loading = false;
     this.closeDialogUsers();

@@ -4,6 +4,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { UserComponent } from "./user/user.component";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
 import { CostumersComponent } from "./costumers/costumers.component";
+import { CostumerDetailComponent } from "./costumer-detail/costumer-detail.component";
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: "user", component: UserComponent },
   { path: "user/:id", component: UserDetailComponent },
   { path: "costumer", component: CostumersComponent },
+  { path: "costumer/:id", component: CostumerDetailComponent },
 ];
 
 @NgModule({

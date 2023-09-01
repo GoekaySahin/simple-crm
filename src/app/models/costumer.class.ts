@@ -8,7 +8,7 @@ export class Costumer {
   notice: string;
 
   constructor(obj?: any) {
-    this.name = obj ? obj.costumer : ""; // wenn obj exestiert nimm obj.firstName ansonsten ''
+    this.name = obj ? obj.name : ""; // wenn obj exestiert nimm obj.firstName ansonsten ''
     this.contactperson = obj ? obj.contactperson : "";
     this.street = obj ? obj.street : "";
     this.city = obj ? obj.city : "";

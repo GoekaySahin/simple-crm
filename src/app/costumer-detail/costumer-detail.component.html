@@ -1,0 +1,63 @@
+<mat-card class="costumer-head">
+  <button
+    class="edit"
+    [matMenuTriggerFor]="menuName"
+    mat-icon-button
+    aria-label="Example icon button with a vertical three dot icon"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menuName="matMenu">
+    <button mat-menu-item (click)="editMenu()">edit</button>
+  </mat-menu>
+  <div class="costumer-content">
+    <div class="costumer-data">
+      <h1>
+        {{ this.costumer.name }}
+      </h1>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card class="costumer-detail">
+  <!--   <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="more_ver"
+     
+      >t</mat-icon -->
+  <button
+    class="edit-data"
+    [matMenuTriggerFor]="menu"
+    mat-icon-button
+    aria-label="Example icon button with a vertical three dot icon"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="editAddress()">edit</button>
+  </mat-menu>
+  <mat-card-title ngClass="address-costumer">Address</mat-card-title>
+  <mat-card-content>
+    <div class="address-head">
+      <span>{{ this.costumer.street }}</span
+      ><span class="ml">{{ this.costumer.city }}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-title ngClass="address-costumer">Contact data</mat-card-title>
+  <mat-card-content>
+    <div class="address-footer">
+      <span style="font-weight: 500">Contactperson: </span>
+      <span>{{ this.costumer.contactperson }}</span>
+      <span class="ml" style="font-weight: 500">Email: </span>
+      <span>{{ this.costumer.email }}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-title ngClass="address-costumer">Notice</mat-card-title>
+  <mat-card-content>
+    <div class="address-footer">
+      <span>{{ this.costumer.notice }}</span>
+      <span *ngIf="empty">no notes available</span>
+    </div>
+  </mat-card-content>
+</mat-card>
