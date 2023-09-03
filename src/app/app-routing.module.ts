@@ -5,9 +5,10 @@ import { UserComponent } from "./user/user.component";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
 import { CostumersComponent } from "./costumers/costumers.component";
 import { CostumerDetailComponent } from "./costumer-detail/costumer-detail.component";
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-  { path: "", component: DashboardComponent },
+  { path: "", component: LoginComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "user", component: UserComponent },
   { path: "user/:id", component: UserDetailComponent },
