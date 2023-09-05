@@ -1,0 +1,44 @@
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mat-card {
+    padding: 16px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  gap: 12px;
+}
+
+mat-card-content {
+  padding: 0px 24px 16px;
+  font-size: 19px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.btnbox {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+}
+
+mat-label {
+  letter-spacing: 2px;
+}
+
+.d-none {
+  display: none;
+}

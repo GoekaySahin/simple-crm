@@ -1,1 +1,65 @@
-<p>login works!</p>
+<div class="login-overlay">
+  <mat-card>
+    <mat-card-content>Access with email</mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com"
+          [(ngModel)]="email"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          [(ngModel)]="password"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="btnbox">
+        <button
+          *ngIf="!emailValid || !passwordEnterChecker()"
+          mat-raised-button
+          disabled
+        >
+          OK
+        </button>
+        <button
+          *ngIf="emailValid && passwordEnterChecker()"
+          mat-button
+          (click)="login()"
+        >
+          OK
+        </button>
+        <button mat-button [routerLink]="['/register']">REGISTER</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -42,7 +42,19 @@ import { DialogaddcostumerComponent } from "./dialogaddcostumer/dialogaddcostume
 import { DialogEditCostumerComponent } from "./dialog-edit-costumer/dialog-edit-costumer.component";
 import { CostumerDetailComponent } from "./costumer-detail/costumer-detail.component";
 import { DialogEditCostumerAddressComponent } from "./dialog-edit-costumer-address/dialog-edit-costumer-address.component";
-import { LoginComponent } from './login/login.component';
+import { Component } from "@angular/core";
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+  ReactiveFormsModule,
+} from "@angular/forms";
+import { ErrorStateMatcher } from "@angular/material/core";
+import { NgIf } from "@angular/common";
+import { LoginComponent } from "./login/login.component";
+import { AuthServiceService } from "./auth-service.service";
+import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
   declarations: [
@@ -57,8 +69,9 @@ import { LoginComponent } from './login/login.component';
     DialogaddcostumerComponent,
     DialogEditCostumerComponent,
     CostumerDetailComponent,
-    DialogEditCostumerAddressComponent,
     LoginComponent,
+    DialogEditCostumerAddressComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +80,7 @@ import { LoginComponent } from './login/login.component';
     MatToolbarModule,
     MatCardModule,
     MatSidenavModule,
-
+    ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
@@ -88,7 +101,15 @@ import { LoginComponent } from './login/login.component';
     MatMenuModule,
   ],
 
-  providers: [],
+  providers: [
+    AuthServiceService,
+    Validators,
+    NgForm,
+    FormGroupDirective,
+    FormControl,
+    ErrorStateMatcher,
+    NgIf,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

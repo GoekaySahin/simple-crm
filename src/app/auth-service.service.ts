@@ -1,5 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { Firestore, getFirestore } from "@angular/fire/firestore";
+import { Router } from "@angular/router";
 import { firebaseConfig } from "@environments/firebase-config";
 import { initializeApp } from "firebase/app";
 import {
@@ -7,7 +8,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { Observable } from "rxjs";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
 
 @Injectable({
   providedIn: "root",
@@ -17,11 +22,12 @@ export class AuthServiceService {
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
-  constructor() {}
+  constructor(private router: Router) {}
   auth = getAuth();
 
-  creatUser(email, password) {
-    createUserWithEmailAndPassword(this.auth, email, password)
+  creatUser(auth, email, password) {
+    console.log(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -34,8 +40,8 @@ export class AuthServiceService {
       });
   }
 
-  signInWithEmail(email, password) {
-    signInWithEmailAndPassword(this.auth, email, password)
+  signInWithEmail(auth, email, password) {
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
