@@ -1,0 +1,56 @@
+.charts {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .years-output {
+    width: 480px;
+    height: 350px;
+  }
+
+  div {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 2px;
+      font-weight: 500;
+      text-decoration: underline 2px;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+mat-card {
+  padding: 50px 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 100px 0 50px;
+
+  .card {
+    text-align: center;
+    border: 2px solid rgb(185, 166, 118);
+    padding: 32px;
+    min-width: 300px;
+
+    &:hover {
+      border: 2px solid rgba(185 266 118);
+      scale: 1.2;
+    }
+  }
+
+  mat-card-content {
+    font-size: 40px;
+    padding: 0 0 20px 0;
+    color: #476e88;
+  }
+}

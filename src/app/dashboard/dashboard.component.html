@@ -1,1 +1,66 @@
-<p>dashboard works!</p>
+<div class="dashboard-overlay">
+  <mat-card>
+    <div class="charts">
+      <div>
+        <h2>Sales 2023</h2>
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+        >
+        </canvas>
+      </div>
+
+      <div class="cake">
+        <h2>Sold at places</h2>
+        <canvas
+          baseChart
+          [type]="'pie'"
+          [datasets]="pieChartDatasets"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend"
+        >
+        </canvas>
+      </div>
+
+      <div class="years">
+        <h2>Past years</h2>
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="'bar'"
+          ngClass="years-output"
+        >
+        </canvas>
+      </div>
+    </div>
+
+    <div class="cards">
+      <mat-card class="card">
+        <mat-card-content>4</mat-card-content>
+        <h2>outstanding invoices</h2>
+      </mat-card>
+      <mat-card class="card">
+        <mat-card-content>5</mat-card-content>
+        <h2>Write invoices</h2>
+      </mat-card>
+      <mat-card class="card">
+        <mat-card-content>10</mat-card-content>
+        <h2>Offers created this month</h2>
+      </mat-card>
+      <mat-card class="card">
+        <mat-card-content>6</mat-card-content>
+        <h2>Order received this month</h2>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

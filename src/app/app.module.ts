@@ -55,6 +55,7 @@ import { NgIf } from "@angular/common";
 import { LoginComponent } from "./login/login.component";
 import { AuthServiceService } from "./auth-service.service";
 import { RegisterComponent } from "./register/register.component";
+import { NgChartsModule } from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { RegisterComponent } from "./register/register.component";
   ],
   imports: [
     BrowserModule,
+    NgChartsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
