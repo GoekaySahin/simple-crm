@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -11,6 +11,9 @@ import {
 import { FormControl, Validators } from "@angular/forms";
 import { AuthServiceService } from "../auth-service.service";
 import { UserLogin } from "../models/userLogin.class";
+import { MatMenuTrigger } from "@angular/material/menu";
+import { MatDialog } from "@angular/material/dialog";
+import { DialogGuestLoginComponent } from "../dialog-guest-login/dialog-guest-login.component";
 
 @Component({
   selector: "app-login",
@@ -18,6 +21,8 @@ import { UserLogin } from "../models/userLogin.class";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent {
+  @ViewChild("menuTrigger") menuTrigger: MatMenuTrigger;
+
   userLogin = new UserLogin();
   email: any;
   emailValid = false;
@@ -25,10 +30,14 @@ export class LoginComponent {
   password: string = "";
   hide = true;
   auth = getAuth();
+
   getErrorMessage() {
     throw new Error("Method not implemented.");
   }
-  constructor(private authService: AuthServiceService) {
+  constructor(
+    private authService: AuthServiceService,
+    public dialog: MatDialog
+  ) {
     this.emailFormControl.valueChanges.subscribe((value) => {
       if (this.emailFormControl.valid) {
         this.handleValidEmail();
@@ -61,4 +70,14 @@ export class LoginComponent {
   }
 
   matcher = new MyErrorStateMatcher();
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogGuestLoginComponent, {
+      restoreFocus: false,
+    });
+
+    // Manually restore focus to the menu trigger since the element that
+    // opens the dialog won't be in the DOM any more when the dialog closes.
+    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+  }
 }

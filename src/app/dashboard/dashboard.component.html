@@ -4,9 +4,21 @@
       <div>
         <h2>Sales 2023</h2>
         <canvas
+          *ngIf="!mobile"
           baseChart
           width="400"
           height="400"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+        >
+        </canvas>
+        <canvas
+          *ngIf="mobile"
+          baseChart
+          width="300"
+          height="200"
           [type]="'line'"
           [data]="lineChartData"
           [options]="lineChartOptions"
@@ -18,7 +30,23 @@
       <div class="cake">
         <h2>Sold at places</h2>
         <canvas
+          *ngIf="!mobile"
           baseChart
+          width="300"
+          height="300"
+          [type]="'pie'"
+          [datasets]="pieChartDatasets"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend"
+        >
+        </canvas>
+        <canvas
+          baseChart
+          *ngIf="mobile"
+          width="200"
+          height="200"
           [type]="'pie'"
           [datasets]="pieChartDatasets"
           [labels]="pieChartLabels"
@@ -32,7 +60,23 @@
       <div class="years">
         <h2>Past years</h2>
         <canvas
+          *ngIf="!mobile"
           baseChart
+          width="480"
+          height="240"
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="'bar'"
+          ngClass="years-output"
+        >
+        </canvas>
+        <canvas
+          baseChart
+          *ngIf="mobile"
+          width="320"
+          height="160"
           [data]="barChartData"
           [options]="barChartOptions"
           [plugins]="barChartPlugins"

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { AppComponent } from "../app.component";
 import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
 
@@ -9,6 +9,22 @@ import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
 })
 export class DashboardComponent {
   title = "ng2-charts-demo";
+  lineChart;
+  mobile = false;
+
+  lineWidth() {
+    this.lineChart.width = 300;
+    this.lineChart.height = 300;
+  }
+
+  @HostListener("window:resize", ["$event"])
+  onResize(event: Event): void {
+    if (window.innerWidth < 1400) {
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
+  }
 
   public lineChartData: ChartConfiguration<"line">["data"] = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],

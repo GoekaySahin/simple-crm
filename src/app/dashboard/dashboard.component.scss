@@ -25,6 +25,11 @@
   }
 }
 
+.line-chart {
+  width: 400px;
+  height: 400px;
+}
+
 mat-card {
   padding: 50px 0;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -52,5 +57,32 @@ mat-card {
     font-size: 40px;
     padding: 0 0 20px 0;
     color: #476e88;
+  }
+}
+
+@media (width < 1410px) {
+  .charts {
+    canvas {
+      height: 300px;
+      width: 300px;
+    }
+
+    div {
+      height: 300px;
+    }
+  }
+
+  .cake {
+    canvas {
+      height: 250px;
+      width: 250px;
+    }
+  }
+
+  .years {
+    canvas {
+      height: 140px;
+      width: 380px;
+    }
   }
 }

@@ -1,5 +1,13 @@
 <div class="login-overlay">
-  <mat-card>
+  <mat-card
+    ><button
+      class="dots"
+      mat-icon-button
+      aria-label="Example icon button with a vertical three dot icon"
+      (click)="openDialog()"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
     <mat-card-content>Access with email</mat-card-content>
     <form class="example-form">
       <mat-form-field class="example-full-width">

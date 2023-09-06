@@ -19,7 +19,7 @@ form {
 }
 
 mat-card-content {
-  padding: 0px 24px 16px;
+  padding: 16px 24px 16px;
   font-size: 19px;
   letter-spacing: 2px;
   font-weight: 500;
@@ -41,4 +41,13 @@ mat-label {
 
 .d-none {
   display: none;
+}
+
+.dots {
+  position: absolute;
+  right: 0px;
+  top: 4px;
+}
+.popup-guest {
+  padding: 24;
 }
