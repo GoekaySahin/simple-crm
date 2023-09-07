@@ -10,16 +10,24 @@
     </div>
 
     <ul>
-      <li [routerLink]="['/dashboard']">
+      <li (click)="toDashboard()">
         <mat-icon
           ><span class="material-symbols-outlined"> fact_check </span></mat-icon
         >Dashboard
       </li>
-      <li [routerLink]="['/user']"><mat-icon>person</mat-icon>User</li>
-      <li [routerLink]="['/costumer']">
-        <mat-icon>handshake</mat-icon>costumer
+      <li (click)="toUser()"><mat-icon>person</mat-icon>User</li>
+      <li (click)="toCostumer()"><mat-icon>handshake</mat-icon>Costumer</li>
+      <li (click)="toPrivacy()">
+        <span class="material-symbols-outlined">
+          <mat-icon>policy</mat-icon>Policy
+        </span>
       </li>
+      <li (click)="toImprint()"><mat-icon>notes</mat-icon>Imprint</li>
+
+      <li (click)="toLogin()"><mat-icon>logout</mat-icon>Logout</li>
     </ul>
+
+    <div class="logout"></div>
   </mat-drawer>
 
   <div class="example-sidenav-content d-flex">

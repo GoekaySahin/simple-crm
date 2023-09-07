@@ -7,6 +7,8 @@ import { CostumersComponent } from "./costumers/costumers.component";
 import { CostumerDetailComponent } from "./costumer-detail/costumer-detail.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
+import { PrivacyComponent } from "./privacy/privacy.component";
+import { ImprintComponent } from "./imprint/imprint.component";
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: "costumer", component: CostumersComponent },
   { path: "costumer/:id", component: CostumerDetailComponent },
   { path: "register", component: RegisterComponent },
+  { path: "privacy", component: PrivacyComponent },
+  { path: "imprint", component: ImprintComponent },
 ];
 
 @NgModule({

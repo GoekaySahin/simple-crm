@@ -61,28 +61,30 @@ mat-card {
 }
 
 @media (width < 1410px) {
-  .charts {
-    canvas {
-      height: 300px;
-      width: 300px;
-    }
-
-    div {
-      height: 300px;
+  .dashboard-overlay {
+    .cards {
+      mat-card {
+        padding: 24px 8px 8px;
+        min-width: initial;
+      }
     }
   }
 
-  .cake {
-    canvas {
-      height: 250px;
-      width: 250px;
-    }
+  .charts div {
+    height: 250px;
   }
+}
 
-  .years {
-    canvas {
-      height: 140px;
-      width: 380px;
-    }
+@media (width <= 1060px) {
+  .charts,
+  .cards {
+    flex-direction: column;
+    gap: 72px;
+  }
+}
+
+@media (width <= 500px) {
+  .charts div {
+    height: 250px;
   }
 }

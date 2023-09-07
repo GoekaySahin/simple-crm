@@ -35,13 +35,26 @@
             matInput
             [(ngModel)]="password"
             [ngModelOptions]="{ standalone: true }"
-            placeholder="Placeholder"
           />
         </mat-form-field>
       </p>
 
       <div class="buttonbox">
-        <button mat-button (click)="register()">REGISTER</button>
+        <button
+          mat-button
+          (click)="register()"
+          *ngIf="emailValid && passwordEnterChecker()"
+        >
+          REGISTER
+        </button>
+        <button
+          mat-raised-button
+          disabled
+          *ngIf="!emailValid || !passwordEnterChecker()"
+        >
+          REGSITER
+        </button>
+
         <button mat-button (click)="toLogin()">BACK</button>
       </div>
     </form>

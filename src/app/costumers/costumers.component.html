@@ -5,8 +5,8 @@
         <tr>
           <th>Name and Contactperson</th>
           <th>E-mail</th>
-          <th>City</th>
-          <th>Contactperson</th>
+          <th *ngIf="!mobile">City</th>
+          <th *ngIf="!mobile">Contactperson</th>
         </tr>
         <tr
           *ngFor="let costumer of allCostumer"
@@ -14,8 +14,8 @@
         >
           <td>{{ costumer.name }}</td>
           <td>{{ costumer.email }}</td>
-          <td>{{ costumer.city }}</td>
-          <td>{{ costumer.contactperson }}</td>
+          <td *ngIf="!mobile">{{ costumer.city }}</td>
+          <td *ngIf="!mobile">{{ costumer.contactperson }}</td>
         </tr>
       </table>
     </mat-card-content>

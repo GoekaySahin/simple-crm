@@ -18,10 +18,29 @@ export class RegisterComponent {
   password: string;
   correct = false;
 
-  constructor(
-    private authService: AuthServiceService,
-    private router: Router
-  ) {}
+  emailValid = false;
+
+  constructor(private authService: AuthServiceService, private router: Router) {
+    this.emailFormControl.valueChanges.subscribe((value) => {
+      if (this.emailFormControl.valid) {
+        this.handleValidEmail();
+      } else {
+        this.handleInvalidEmail();
+      }
+    });
+  }
+
+  handleValidEmail() {
+    this.emailValid = true;
+  }
+
+  handleInvalidEmail() {
+    this.emailValid = false;
+  }
+
+  passwordEnterChecker() {
+    return this.password.length > 7;
+  }
 
   emailFormControl = new FormControl("", [
     Validators.required,

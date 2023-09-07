@@ -29,9 +29,15 @@ export class CostumersComponent {
   db = getFirestore(this.app);
   allCostumer = [];
   topValue = 200;
+  mobile = false;
 
   constructor(private appComponent: AppComponent, public dialog: MatDialog) {
     this.setCustomerToShow();
+    if (window.innerWidth < 500) {
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
   }
   setCustomerToShow() {
     this.appComponent.costumerPage = true;

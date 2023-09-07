@@ -11,6 +11,7 @@ export class DashboardComponent {
   title = "ng2-charts-demo";
   lineChart;
   mobile = false;
+  under500 = false;
 
   lineWidth() {
     this.lineChart.width = 300;
@@ -19,9 +20,14 @@ export class DashboardComponent {
 
   @HostListener("window:resize", ["$event"])
   onResize(event: Event): void {
-    if (window.innerWidth < 1400) {
+    if (window.innerWidth > 1400) {
+      this.mobile = false;
+      this.under500 = false;
+    } else if (window.innerWidth < 1400 && window.innerWidth > 500) {
       this.mobile = true;
-    } else {
+      this.under500 = false;
+    } else if (window.innerWidth < 500) {
+      this.under500 = true;
       this.mobile = false;
     }
   }
@@ -65,6 +71,16 @@ export class DashboardComponent {
 
   constructor(private appComponent: AppComponent) {
     this.setDashboardToShow();
+    if (window.innerWidth > 1400) {
+      this.mobile = false;
+      this.under500 = false;
+    } else if (window.innerWidth < 1400 && window.innerWidth > 500) {
+      this.mobile = true;
+      this.under500 = false;
+    } else if (window.innerWidth < 500) {
+      this.under500 = true;
+      this.mobile = false;
+    }
   }
   public barChartLegend = true;
   public barChartPlugins = [];

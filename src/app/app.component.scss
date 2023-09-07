@@ -43,6 +43,10 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 16px;
 
   li {
     display: flex;
@@ -59,6 +63,11 @@ ul {
 
     &:hover {
       background-color: rgb(182 181 181 / 11%);
+    }
+
+    &:last-child {
+      position: absolute;
+      bottom: 72px;
     }
   }
 }
@@ -78,4 +87,10 @@ ul {
 
 .mat-toolbar {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media (width <= 710px) {
+  .router-container {
+    padding: 0;
+  }
 }

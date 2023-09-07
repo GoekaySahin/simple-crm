@@ -1,9 +1,25 @@
 .mdc-dialog__actions {
   padding: 8px 24px;
 }
+.mat-mdc-dialog-content {
+  padding: 0px 24px 0px 24px;
+}
 
 .mat-mdc-dialog-actions {
-  justify-content: space-around;
+  justify-content: space-between;
+
+  button {
+    width: 150px;
+    height: 50px;
+  }
+}
+
+.dialog-container {
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
 }
 
 .input-fields {

@@ -57,6 +57,8 @@ import { AuthServiceService } from "./auth-service.service";
 import { RegisterComponent } from "./register/register.component";
 import { NgChartsModule } from "ng2-charts";
 import { DialogGuestLoginComponent } from './dialog-guest-login/dialog-guest-login.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { DialogGuestLoginComponent } from './dialog-guest-login/dialog-guest-log
     DialogEditCostumerAddressComponent,
     RegisterComponent,
     DialogGuestLoginComponent,
+    ImprintComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,
