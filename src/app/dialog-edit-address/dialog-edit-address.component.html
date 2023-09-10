@@ -1,11 +1,11 @@
 <div class="dialog-container w350px">
   <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
-  <h1 mat-dialog-title>Edit Street</h1>
-  <p>Change your address</p>
+  <h1 mat-dialog-title>Edit Data</h1>
+  <p>Change your data</p>
   <div mat-dialog-content>
     <div class="address">
-      <mat-form-field appearance="outline" class="w100">
+      <!-- <mat-form-field appearance="outline" class="w100">
         <mat-label>Enter street and house no.</mat-label>
         <input
           [disabled]="loading"
@@ -15,7 +15,7 @@
           matInput
           placeholder="Streetname + no"
         />
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
     <div class="input-fields gap-16 clm">
       <mat-form-field appearance="outline">
@@ -30,20 +30,20 @@
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Enter zip code.</mat-label>
+        <mat-label>Enter phone number.</mat-label>
         <input
           [disabled]="loading"
-          [(ngModel)]="user.zipCode"
+          [(ngModel)]="user.phoneNumber"
           #ctrl="ngModel"
           required
           matInput
-          placeholder="zip"
+          placeholder="number"
         />
       </mat-form-field>
     </div>
   </div>
   <div mat-dialog-actions class="pdg">
     <button (click)="saveUser()" mat-button>add</button>
-    <button mat-button>Cancel</button>
+    <button mat-button (click)="cancel()">Cancel</button>
   </div>
 </div>

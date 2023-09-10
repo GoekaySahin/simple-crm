@@ -40,83 +40,47 @@
       </mat-form-field>
     </div>
 
-    <div class="birth-date">
-      <mat-form-field class="example-form-field" appearance="outline">
-        <mat-label>Choose a date</mat-label>
-        <input
-          [disabled]="loading"
-          [(ngModel)]="birthDate"
-          #ctrl="ngModel"
-          required
-          matInput
-          [matDatepicker]="datepicker"
-        />
-        <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="datepicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button
-              [disabled]="loading"
-              mat-button
-              matDatepickerCancel
-              (click)="this.closeDialogUsers()"
-            >
-              Cancel
-            </button>
-            <button
-              [disabled]="loading"
-              mat-raised-button
-              color="primary"
-              matDatepickerApply
-            >
-              Apply
-            </button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-    </div>
-
     <div class="address">
-      <mat-form-field appearance="outline">
-        <mat-label>Enter street and house no.</mat-label>
-        <input
-          [disabled]="loading"
-          [(ngModel)]="user.street"
+      <!-- z
+    <mat-form-field appearance="outline">
+      <mat-label>Enter street and house no.</mat-label>
+      <input
+      [disabled]="loading"
+      [(ngModel)]="user.street"
           #ctrl="ngModel"
           required
           matInput
           placeholder="Streetname + no"
-        />
-      </mat-form-field>
+          />
+        </mat-form-field>
     </div>
-    <div class="input-fields gap-16">
-      <mat-form-field appearance="outline">
-        <mat-label>Enter City.</mat-label>
-        <input
-          [disabled]="loading"
-          [(ngModel)]="user.city"
-          #ctrl="ngModel"
-          required
-          matInput
-        />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Enter zip code.</mat-label>
-        <input
-          [disabled]="loading"
-          [(ngModel)]="user.zipCode"
-          #ctrl="ngModel"
-          required
-          matInput
-        />
-      </mat-form-field>
+  -->
+      <div class="input-fields gap-16">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter City.</mat-label>
+          <input
+            [disabled]="loading"
+            [(ngModel)]="user.city"
+            #ctrl="ngModel"
+            required
+            matInput
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter phone number.</mat-label>
+          <input
+            [disabled]="loading"
+            [(ngModel)]="user.phoneNumber"
+            #ctrl="ngModel"
+            required
+            matInput
+          />
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-  <div mat-dialog-actions>
-    <button (click)="saveUser()" mat-button>add</button>
-    <button mat-button (click)="closeDialogUsers()">Cancel</button>
+    <div mat-dialog-actions>
+      <button (click)="saveUser()" mat-button>add</button>
+      <button mat-button (click)="closeDialogUsers()">Cancel</button>
+    </div>
   </div>
 </div>

@@ -39,6 +39,9 @@ export class RegisterComponent {
   }
 
   passwordEnterChecker() {
+    if (this.password == undefined) {
+      return '';
+    }
     return this.password.length > 7;
   }
 

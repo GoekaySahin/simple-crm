@@ -24,13 +24,14 @@ export class AuthServiceService {
   db = getFirestore(this.app);
   constructor(private router: Router) {}
   auth = getAuth();
+  loginData = false;
 
   creatUser(auth, email, password) {
-    console.log(auth, email, password);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+
         // ...
       })
       .catch((error) => {
@@ -41,15 +42,19 @@ export class AuthServiceService {
   }
 
   signInWithEmail(auth, email, password) {
-    signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        this.loginData = true;
+        return this.loginData;
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        this.loginData = false;
+        return this.loginData;
       });
   }
 }

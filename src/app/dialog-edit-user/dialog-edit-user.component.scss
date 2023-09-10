@@ -10,3 +10,9 @@ p {
 .dialogName {
   padding: 0px;
 }
+
+@media (width <= 1000px) {
+  .w350 {
+    width: initial;
+  }
+}

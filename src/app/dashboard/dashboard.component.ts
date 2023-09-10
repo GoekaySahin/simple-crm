@@ -20,10 +20,10 @@ export class DashboardComponent {
 
   @HostListener("window:resize", ["$event"])
   onResize(event: Event): void {
-    if (window.innerWidth > 1400) {
+    if (window.innerWidth > 1750) {
       this.mobile = false;
       this.under500 = false;
-    } else if (window.innerWidth < 1400 && window.innerWidth > 500) {
+    } else if (window.innerWidth < 1750 && window.innerWidth > 500) {
       this.mobile = true;
       this.under500 = false;
     } else if (window.innerWidth < 500) {
@@ -71,10 +71,10 @@ export class DashboardComponent {
 
   constructor(private appComponent: AppComponent) {
     this.setDashboardToShow();
-    if (window.innerWidth > 1400) {
+    if (window.innerWidth > 1750) {
       this.mobile = false;
       this.under500 = false;
-    } else if (window.innerWidth < 1400 && window.innerWidth > 500) {
+    } else if (window.innerWidth < 1750 && window.innerWidth > 500) {
       this.mobile = true;
       this.under500 = false;
     } else if (window.innerWidth < 500) {

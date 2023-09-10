@@ -43,8 +43,11 @@ export class DialogEditCostumerAddressComponent {
     this.loading = true;
     const costumerRef = doc(this.db, "costumer", this.costumerId);
     await updateDoc(costumerRef, this.costumer.toJSON());
-    console.log("Daten erfolgreich aktualisiert!");
     this.loading = false;
+    this.closeDialogUsers();
+  }
+
+  cancel() {
     this.closeDialogUsers();
   }
 }

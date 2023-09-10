@@ -40,7 +40,7 @@
       <span *ngIf="privacyPage">Privacy</span>
     </mat-toolbar>
   </div>
-  <div class="router-container">
+  <div class="router-container" (click)="drawer.close()">
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>

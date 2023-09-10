@@ -44,7 +44,6 @@ export class CostumerDetailComponent {
   getUser(id) {
     this.costumerRef = doc(this.db, "costumer", id); // user über doc geholt weil bei collect kann man keine id mitgeben
     this.unsubscribe = onSnapshot(this.costumerRef, (docSnapshot) => {
-      console.log("dok: ", docSnapshot.data());
       this.costumer = new Costumer(docSnapshot.data());
     });
     this.checkIfNoticeEmpty();

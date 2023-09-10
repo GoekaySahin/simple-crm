@@ -2,13 +2,13 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>E-mail</th>
       <th>City</th>
+      <th>E-mail</th>
     </tr>
     <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
       <td>{{ user.firstName }}, {{ user.lastName }}</td>
       <td>{{ user.city }}</td>
-      <td>{{ user.zipCode }}</td>
+      <td>{{ user.email }}</td>
     </tr>
   </table>
 </mat-card>

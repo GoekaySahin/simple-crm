@@ -41,7 +41,6 @@ export class DialogEditUserComponent {
     this.loading = true;
     const userRef = doc(this.db, "users", this.userId);
     await updateDoc(userRef, this.user.toJSON());
-    console.log("Daten erfolgreich aktualisiert!");
     this.loading = false;
     this.closeDialogUsers();
   }

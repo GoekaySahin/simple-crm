@@ -1,4 +1,11 @@
-import { Component, inject } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  Directive,
+  ElementRef,
+  ViewChild,
+  inject,
+} from "@angular/core";
 
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import {
@@ -22,6 +29,7 @@ import { AppComponent } from "../app.component";
   styleUrls: ["./dialogaddcostumer.component.scss"],
 })
 export class DialogaddcostumerComponent {
+  @ViewChild("costumerName") name: ElementRef;
   costumer: Costumer = new Costumer();
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
@@ -29,20 +37,44 @@ export class DialogaddcostumerComponent {
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   CostumerId;
+  filled = false;
 
   constructor(
     public dialogRef: MatDialogRef<DialogaddcostumerComponent>,
     public route: ActivatedRoute
-  ) {}
+  ) {
+    setTimeout(() => {
+      this.focus();
+    }, 200);
+  }
+
+  focus() {
+    const inputElement: HTMLInputElement = this.name.nativeElement;
+    inputElement.focus();
+  }
 
   async saveCostumer() {
+    this.checkInput();
+    if (this.filled == false) {
+      return;
+    }
+
     this.loading = true;
     const aCollection = collection(this.firestore, "costumer");
     await setDoc(doc(aCollection), this.costumer.toJSON()); // Die klasse muss in eine JSON umgewandelt werden (Manuel im models  )
     this.loading = false;
     this.closeDialogCostumer();
-    console.log("Benutzerdaten erfolgreich gespeichert.");
-    console.log(this.costumer);
+  }
+
+  checkInput() {
+    if (
+      (this.costumer.name.length > 1,
+      this.costumer.street.length > 1,
+      this.costumer.email.length > 1,
+      this.costumer.city.length > 1)
+    ) {
+      this.filled = true;
+    }
   }
 
   closeDialogCostumer() {

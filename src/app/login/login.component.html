@@ -1,4 +1,16 @@
 <div class="login-overlay">
+  <div class="loginFail" *ngIf="fail">
+    <mat-card>
+      <mat-card-content class="login-fails">Login fail!</mat-card-content>
+
+      <span>No user with this email!</span>
+      <div mat-dialog-actions class="wrong-btn">
+        <button mat-button mat-dialog-close (click)="closeWrong()">
+          Close
+        </button>
+      </div>
+    </mat-card>
+  </div>
   <mat-card
     ><button
       class="dots"

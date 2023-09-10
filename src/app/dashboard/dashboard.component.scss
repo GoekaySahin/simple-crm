@@ -60,7 +60,7 @@ mat-card {
   }
 }
 
-@media (width < 1410px) {
+@media (width <= 1750px) {
   .dashboard-overlay {
     .cards {
       mat-card {
@@ -75,7 +75,7 @@ mat-card {
   }
 }
 
-@media (width <= 1060px) {
+@media (width <= 1350px) {
   .charts,
   .cards {
     flex-direction: column;

@@ -40,7 +40,6 @@ export class UserDetailComponent {
   getUser(id) {
     this.userRef = doc(this.db, "users", id); // user über doc geholt weil bei collect kann man keine id mitgeben
     this.unsubscribe = onSnapshot(this.userRef, (docSnapshot) => {
-      console.log("dok: ", docSnapshot.data());
       this.user = new User(docSnapshot.data());
     });
   }

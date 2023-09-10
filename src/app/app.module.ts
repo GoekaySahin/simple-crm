@@ -56,9 +56,10 @@ import { LoginComponent } from "./login/login.component";
 import { AuthServiceService } from "./auth-service.service";
 import { RegisterComponent } from "./register/register.component";
 import { NgChartsModule } from "ng2-charts";
-import { DialogGuestLoginComponent } from './dialog-guest-login/dialog-guest-login.component';
-import { ImprintComponent } from './imprint/imprint.component';
-import { PrivacyComponent } from './privacy/privacy.component';
+import { DialogGuestLoginComponent } from "./dialog-guest-login/dialog-guest-login.component";
+import { ImprintComponent } from "./imprint/imprint.component";
+import { PrivacyComponent } from "./privacy/privacy.component";
+import { PasswordEmailWrongComponent } from './password-email-wrong/password-email-wrong.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     DialogGuestLoginComponent,
     ImprintComponent,
     PrivacyComponent,
+    PasswordEmailWrongComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     MatFormFieldModule,
     MatNativeDateModule,
     FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),

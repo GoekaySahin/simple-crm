@@ -14,6 +14,7 @@ import { UserLogin } from "../models/userLogin.class";
 import { MatMenuTrigger } from "@angular/material/menu";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogGuestLoginComponent } from "../dialog-guest-login/dialog-guest-login.component";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -30,13 +31,16 @@ export class LoginComponent {
   password: string = "";
   hide = true;
   auth = getAuth();
+  loginData = false;
+  fail = false;
 
   getErrorMessage() {
     throw new Error("Method not implemented.");
   }
   constructor(
     private authService: AuthServiceService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
     this.emailFormControl.valueChanges.subscribe((value) => {
       if (this.emailFormControl.valid) {
@@ -45,6 +49,10 @@ export class LoginComponent {
         this.handleInvalidEmail();
       }
     });
+  }
+
+  closeWrong() {
+    this.fail = false;
   }
 
   emailFormControl = new FormControl("", [
@@ -65,8 +73,20 @@ export class LoginComponent {
   }
 
   async login() {
-    console.log(this.password, this.email, this.auth);
-    this.authService.signInWithEmail(this.auth, this.email, this.password);
+    let correct = await this.authService.signInWithEmail(
+      this.auth,
+      this.email,
+      this.password
+    );
+    if (correct) {
+      this.router.navigate(["dashboard"]);
+    } else {
+      this.fail = true;
+    }
+  }
+
+  loginTrue() {
+    this.loginData = true;
   }
 
   matcher = new MyErrorStateMatcher();
@@ -75,9 +95,6 @@ export class LoginComponent {
     const dialogRef = this.dialog.open(DialogGuestLoginComponent, {
       restoreFocus: false,
     });
-
-    // Manually restore focus to the menu trigger since the element that
-    // opens the dialog won't be in the DOM any more when the dialog closes.
-    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+    dialogRef.afterClosed().subscribe(/* () => this.menuTrigger.focus() */);
   }
 }

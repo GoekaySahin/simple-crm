@@ -22,6 +22,7 @@ import { DialogaddcostumerComponent } from "../dialogaddcostumer/dialogaddcostum
 })
 export class CostumersComponent {
   @ViewChild("myButton") myButton: ElementRef;
+
   costumer: Costumer = new Costumer();
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
@@ -58,12 +59,10 @@ export class CostumersComponent {
             const costumerData = doc.data() as Costumer;
             costumerData.id = doc.id;
             costumersData.push(costumerData);
-            console.log(costumerData);
           }
         });
 
         this.allCostumer = costumersData;
-        console.log(costumersData);
       }
     );
   }
