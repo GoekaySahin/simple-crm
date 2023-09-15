@@ -1,5 +1,3 @@
-import { firebaseConfig } from "./firebase-config";
-
 export const environment = {
   firebaseConfig: {
     projectId: "simple-crm-bd583",

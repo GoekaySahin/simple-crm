@@ -1,5 +1,3 @@
-import { firebaseConfig } from "./firebase-config"; // Passe den Pfad entsprechend an
-
 export const environment = {
   firebaseConfig: {
     projectId: "simple-crm-bd583",
@@ -9,5 +7,5 @@ export const environment = {
     authDomain: "simple-crm-bd583.firebaseapp.com",
     messagingSenderId: "398615619924",
   },
-  production: true,
+  production: false,
 };

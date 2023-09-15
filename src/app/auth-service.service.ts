@@ -8,7 +8,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
 import { Observable } from "rxjs";
 import { GoogleAuthProvider } from "firebase/auth";
 
