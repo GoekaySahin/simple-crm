@@ -46,7 +46,9 @@ export class CostumerDetailComponent {
     this.unsubscribe = onSnapshot(this.costumerRef, (docSnapshot) => {
       this.costumer = new Costumer(docSnapshot.data());
     });
-    this.checkIfNoticeEmpty();
+    setTimeout(() => {
+      this.checkIfNoticeEmpty();
+    }, 1050);
   }
 
   editMenu() {
@@ -62,7 +64,7 @@ export class CostumerDetailComponent {
   }
 
   checkIfNoticeEmpty() {
-    if (this.costumer.notice == "") {
+    if (this.costumer.notice.length == 0) {
       this.empty = true;
     } else {
       this.empty = false;

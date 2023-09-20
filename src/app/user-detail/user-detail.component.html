@@ -13,14 +13,17 @@
   <div class="user-content">
     <img src="../../assets/img/user-pic.png" />
     <div class="user-data">
-      <h2>{{ user.firstName }}{{ user.lastName }}</h2>
+      <div class="name">
+        <h2>{{ user.firstName }}</h2>
+        <h2>{{ user.lastName }}</h2>
+      </div>
       <span>{{ user.email }}</span>
     </div>
   </div>
 </mat-card>
 
 <mat-card class="user-detail mt-32">
-  <!--   <mat-icon
+  <!--   <mat-icony
     aria-hidden="false"
     aria-label="Example home icon"
     fontIcon="more_ver"
@@ -40,6 +43,7 @@
   <mat-card-title>Address</mat-card-title>
   <mat-card-content>
     {{ user.city }} <br />
+    {{ user.street }} <br />
     {{ user.phoneNumber }}
   </mat-card-content>
 </mat-card>

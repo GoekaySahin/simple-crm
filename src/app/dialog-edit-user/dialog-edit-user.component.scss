@@ -11,6 +11,10 @@ p {
   padding: 0px;
 }
 
+.fc {
+  flex-direction: column;
+}
+
 @media (width <= 1000px) {
   .w350 {
     width: initial;

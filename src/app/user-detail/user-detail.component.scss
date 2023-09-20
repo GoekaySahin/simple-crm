@@ -44,3 +44,9 @@
   position: absolute;
   right: 0px;
 }
+
+.name {
+  display: flex;
+  gap: 4px;
+  margin-inline-start: -1px;
+}

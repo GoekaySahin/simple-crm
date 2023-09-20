@@ -22,6 +22,12 @@ p {
 .pdg {
   padding: 0px 16px 25px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
 @media (width <= 1000px) {
   .w350px {
     width: initial;

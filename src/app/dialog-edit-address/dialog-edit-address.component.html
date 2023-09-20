@@ -19,7 +19,7 @@
     </div>
     <div class="input-fields gap-16 clm">
       <mat-form-field appearance="outline">
-        <mat-label>Enter City.</mat-label>
+        <mat-label>Enter city.</mat-label>
         <input
           [disabled]="loading"
           [(ngModel)]="user.city"
@@ -30,6 +30,17 @@
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Enter street</mat-label>
+        <input
+          [disabled]="loading"
+          [(ngModel)]="user.street"
+          #ctrl="ngModel"
+          required
+          matInput
+          placeholder="Street"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Enter phone number.</mat-label>
         <input
           [disabled]="loading"
@@ -37,7 +48,8 @@
           #ctrl="ngModel"
           required
           matInput
-          placeholder="number"
+          placeholder="Number"
+          type="number"
         />
       </mat-form-field>
     </div>

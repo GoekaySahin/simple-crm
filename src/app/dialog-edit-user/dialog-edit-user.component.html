@@ -1,8 +1,8 @@
 <div class="dialogName">
   <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   <div mat-dialog-content>
-    <p>Please add user Name</p>
-    <div class="input-fields gap-16">
+    <p>Please add user name and email</p>
+    <div class="input-fields gap-16 fc">
       <mat-form-field appearance="outline">
         <mat-label>Enter firstname</mat-label>
         <input
@@ -23,6 +23,17 @@
           required
           matInput
           placeholder="Lastname"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter email</mat-label>
+        <input
+          [disabled]="loading"
+          [(ngModel)]="user.email"
+          #ctrl="ngModel"
+          required
+          matInput
+          placeholder="Email"
         />
       </mat-form-field>
     </div>
