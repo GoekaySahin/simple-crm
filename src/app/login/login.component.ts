@@ -32,7 +32,6 @@ export class LoginComponent {
   hide = true;
   auth = getAuth();
   loginData = false;
-  fail = false;
 
   getErrorMessage() {
     throw new Error("Method not implemented.");
@@ -52,7 +51,7 @@ export class LoginComponent {
   }
 
   closeWrong() {
-    this.fail = false;
+    /* this.fail = false; */
   }
 
   emailFormControl = new FormControl("", [
@@ -80,9 +79,9 @@ export class LoginComponent {
     );
     if (correct) {
       this.router.navigate(["dashboard"]);
-    } else {
+    } /* else {
       this.fail = true;
-    }
+    } */
   }
 
   loginTrue() {
