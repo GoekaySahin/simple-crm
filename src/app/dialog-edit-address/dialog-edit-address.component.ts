@@ -31,7 +31,7 @@ export class DialogEditAddressComponent {
 
   constructor(
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<DialogAddUserComponent>,
+    public dialogRef: MatDialogRef<DialogEditAddressComponent>,
     public route: ActivatedRoute
   ) {}
 

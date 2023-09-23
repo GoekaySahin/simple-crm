@@ -1,21 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserDetailComponent } from './user-detail.component';
+import { UserDetailComponent } from "./user-detail.component";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 
-describe('UserDetailComponent', () => {
+describe("UserDetailComponent", () => {
   let component: UserDetailComponent;
   let fixture: ComponentFixture<UserDetailComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserDetailComponent]
+      imports: [MatDialogModule],
+      declarations: [UserDetailComponent],
     });
     fixture = TestBed.createComponent(UserDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -28,26 +28,20 @@ export class AuthServiceService {
   creatUser(auth, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
       });
   }
 
   signInWithEmail(auth, email, password) {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         this.loginData = true;
         return this.loginData;
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;

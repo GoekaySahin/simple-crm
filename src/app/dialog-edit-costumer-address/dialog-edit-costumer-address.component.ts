@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, NgModule, inject } from "@angular/core";
 import { Costumer } from "../models/costumer.class";
 import {
   Firestore,

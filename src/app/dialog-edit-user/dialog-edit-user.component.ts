@@ -29,7 +29,7 @@ export class DialogEditUserComponent {
 
   constructor(
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<DialogAddUserComponent>,
+    public dialogRef: MatDialogRef<DialogEditUserComponent>,
     public route: ActivatedRoute
   ) {}
 

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, NgModule, inject } from "@angular/core";
 import { User } from "../models/user.class";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
@@ -13,6 +13,10 @@ import { initializeApp } from "@angular/fire/app";
 import { firebaseConfig } from "@environments/firebase-config";
 import { Observable } from "rxjs";
 import { Costumer } from "../models/costumer.class";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatRippleModule } from "@angular/material/core";
 
 @Component({
   selector: "app-dialog-edit-costumer",

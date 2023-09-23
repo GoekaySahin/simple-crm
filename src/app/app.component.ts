@@ -8,7 +8,6 @@ import { MatDrawer } from "@angular/material/sidenav";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = "simplecrm";
   privacyPage = false;
   imprintPage = false;
   costumerPage = false;

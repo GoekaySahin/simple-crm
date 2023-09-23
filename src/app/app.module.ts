@@ -59,7 +59,7 @@ import { NgChartsModule } from "ng2-charts";
 import { DialogGuestLoginComponent } from "./dialog-guest-login/dialog-guest-login.component";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
-import { PasswordEmailWrongComponent } from './password-email-wrong/password-email-wrong.component';
+import { PasswordEmailWrongComponent } from "./password-email-wrong/password-email-wrong.component";
 
 @NgModule({
   declarations: [
