@@ -7,6 +7,9 @@ import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { environment } from "@environments/environment";
 import { MatFormField, MatFormFieldModule } from "@angular/material/form-field";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 describe("DialogEditAddressComponent", () => {
   let component: DialogEditAddressComponent;
@@ -17,6 +20,8 @@ describe("DialogEditAddressComponent", () => {
       imports: [
         MatDialogModule,
         MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
         RouterModule.forRoot([]),
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideFirestore(() => getFirestore()),
@@ -26,6 +31,7 @@ describe("DialogEditAddressComponent", () => {
           provide: MatDialogRef,
           useValue: {},
         },
+        provideAnimations(),
       ],
 
       declarations: [DialogEditAddressComponent],

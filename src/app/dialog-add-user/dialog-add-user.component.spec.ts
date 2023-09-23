@@ -8,6 +8,9 @@ import { environment } from "@environments/environment";
 import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { NgChartsModule } from "ng2-charts";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 describe("DialogAddUserComponent", () => {
   let component: DialogAddUserComponent;
@@ -16,7 +19,7 @@ describe("DialogAddUserComponent", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [DialogAddUserComponent],
-      providers: [{ provide: MatDialogRef, useValue: {} }],
+      providers: [{ provide: MatDialogRef, useValue: {} }, provideAnimations()],
       imports: [
         RouterModule.forRoot([]),
         MatDialogModule,
@@ -24,6 +27,8 @@ describe("DialogAddUserComponent", () => {
         provideFirestore(() => getFirestore()),
         MatFormFieldModule,
         NgChartsModule,
+        FormsModule,
+        MatInputModule,
       ],
     });
     fixture = TestBed.createComponent(DialogAddUserComponent);
