@@ -11,7 +11,6 @@ import { initializeApp } from "@angular/fire/app";
 import { firebaseConfig } from "@environments/firebase-config";
 import { ActivatedRoute } from "@angular/router";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
 
 @Component({
   selector: "app-dialog-edit-address",
@@ -26,7 +25,7 @@ export class DialogEditAddressComponent {
   db = getFirestore(this.app);
   userRef;
   unsubscribe;
-  user = new User(); // wenn ich es nicht in eine klasse packe geht es zwar aber die konsole schmeißt ganze Zeit einen Fehler!
+  user = new User();
   loading = false;
 
   constructor(
@@ -35,10 +34,16 @@ export class DialogEditAddressComponent {
     public route: ActivatedRoute
   ) {}
 
+  /**
+   * This function is to close the dialog to edit the users addresss
+   */
   closeDialogUsers() {
     this.dialogRef.close();
   }
 
+  /**
+   * This function is to save the edited address data from the user
+   */
   async saveUser() {
     this.loading = true;
     const userRef = doc(this.db, "users", this.userId);
@@ -47,6 +52,9 @@ export class DialogEditAddressComponent {
     this.closeDialogUsers();
   }
 
+  /**
+   * This function is to cancel the edit process
+   */
   cancel() {
     this.closeDialogUsers();
   }

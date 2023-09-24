@@ -2,7 +2,6 @@ import { Component, inject } from "@angular/core";
 import { User } from "../models/user.class";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
-import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
 import {
   Firestore,
   doc,
@@ -33,10 +32,16 @@ export class DialogEditUserComponent {
     public route: ActivatedRoute
   ) {}
 
+  /**
+   * This function is to close the dialog to edit the users
+   */
   closeDialogUsers() {
     this.dialogRef.close();
   }
 
+  /**
+   * This function is to save the edited data from the user
+   */
   async saveUser() {
     this.loading = true;
     const userRef = doc(this.db, "users", this.userId);

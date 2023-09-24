@@ -11,6 +11,9 @@ export class ImprintComponent {
     this.setCustomerToShow();
   }
 
+  /**
+   * This function will show the name of the page
+   */
   setCustomerToShow() {
     this.appComponent.imprintPage = true;
     this.appComponent.costumerPage = false;

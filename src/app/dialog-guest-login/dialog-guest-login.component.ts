@@ -1,11 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialogModule,
-} from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-dialog-guest-login",
@@ -15,6 +10,9 @@ import {
 export class DialogGuestLoginComponent {
   constructor(private router: Router, public dialog: MatDialog) {}
 
+  /**
+   * This function is to navigate to dashboard
+   */
   goDashboard() {
     this.router.navigate(["dashboard"]);
     this.dialog.closeAll();

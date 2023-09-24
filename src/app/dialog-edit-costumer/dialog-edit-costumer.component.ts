@@ -1,5 +1,4 @@
-import { Component, NgModule, inject } from "@angular/core";
-import { User } from "../models/user.class";
+import { Component, inject } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
 import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
@@ -13,10 +12,6 @@ import { initializeApp } from "@angular/fire/app";
 import { firebaseConfig } from "@environments/firebase-config";
 import { Observable } from "rxjs";
 import { Costumer } from "../models/costumer.class";
-import { MatButtonModule } from "@angular/material/button";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatRippleModule } from "@angular/material/core";
 
 @Component({
   selector: "app-dialog-edit-costumer",
@@ -29,7 +24,7 @@ export class DialogEditCostumerComponent {
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
-  costumer = new Costumer(); // wenn ich es nicht in eine klasse packe geht es zwar aber die konsole schmeißt ganze Zeit einen Fehler!
+  costumer = new Costumer();
   loading = false;
 
   constructor(
@@ -38,10 +33,16 @@ export class DialogEditCostumerComponent {
     public route: ActivatedRoute
   ) {}
 
+  /**
+   * This function is to close the dialog to edit the costumer
+   */
   closeDialogUsers() {
     this.dialogRef.close();
   }
 
+  /**
+   * This function is to save the edited data from the costumer
+   */
   async saveCostumer() {
     this.loading = true;
     const userRef = doc(this.db, "users", this.costumerId);
@@ -50,6 +51,9 @@ export class DialogEditCostumerComponent {
     this.closeDialogUsers();
   }
 
+  /**
+   * This function is to cancel the edit process
+   */
   cancel() {
     this.closeDialogUsers();
   }

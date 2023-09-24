@@ -1,27 +1,12 @@
-import {
-  AfterViewInit,
-  Component,
-  Directive,
-  ElementRef,
-  ViewChild,
-  inject,
-} from "@angular/core";
-
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import {
-  Firestore,
-  collection,
-  collectionData,
-  getFirestore,
-} from "@angular/fire/firestore";
+import { Component, ElementRef, ViewChild, inject } from "@angular/core";
+import { MatDialogRef } from "@angular/material/dialog";
+import { Firestore, collection, getFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { doc, setDoc } from "firebase/firestore";
 import { firebaseConfig } from "@environments/firebase-config";
 import { initializeApp } from "@angular/fire/app";
 import { ActivatedRoute } from "@angular/router";
 import { Costumer } from "../models/costumer.class";
-import { CostumersComponent } from "../costumers/costumers.component";
-import { AppComponent } from "../app.component";
 
 @Component({
   selector: "app-dialogaddcostumer",
@@ -48,11 +33,19 @@ export class DialogaddcostumerComponent {
     }, 200);
   }
 
+  /**
+   * This function is to manuely focus on a input
+   */
   focus() {
     const inputElement: HTMLInputElement = this.name.nativeElement;
     inputElement.focus();
   }
 
+  /**
+   * This function is to add and save the new costumer
+   *
+   * @returns if not filled
+   */
   async saveCostumer() {
     this.checkInput();
     if (this.filled == false) {
@@ -66,6 +59,9 @@ export class DialogaddcostumerComponent {
     this.closeDialogCostumer();
   }
 
+  /**
+   * Checks if value is in input
+   */
   checkInput() {
     if (
       (this.costumer.name.length > 1,
@@ -77,6 +73,9 @@ export class DialogaddcostumerComponent {
     }
   }
 
+  /**
+   * Close the add costumer dialog
+   */
   closeDialogCostumer() {
     this.dialogRef.close();
   }

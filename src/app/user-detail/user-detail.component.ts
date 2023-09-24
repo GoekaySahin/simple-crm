@@ -37,6 +37,11 @@ export class UserDetailComponent {
     });
   }
 
+  /**
+   * This function is to get the right user with his id
+   *
+   * @param id hash number
+   */
   getUser(id) {
     this.userRef = doc(this.db, "users", id); // user über doc geholt weil bei collect kann man keine id mitgeben
     this.unsubscribe = onSnapshot(this.userRef, (docSnapshot) => {
@@ -44,12 +49,18 @@ export class UserDetailComponent {
     });
   }
 
+  /**
+   * This function is to open the right editable dialog
+   */
   editMenu() {
     const dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user);
     dialog.componentInstance.userId = this.userId;
   }
 
+  /**
+   * This Function is to open the right editable dialog for the address
+   */
   editAddress() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user);

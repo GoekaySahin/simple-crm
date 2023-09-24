@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
-import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from "@angular/material/button";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-password-email-wrong",

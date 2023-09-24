@@ -12,8 +12,14 @@ import { NgIf } from "@angular/common";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
-/** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
+  /**
+   * This function controlls the input if it is a correct email
+   *
+   * @param control json
+   * @param form json
+   * @returns
+   */
   isErrorState(
     control: FormControl | null,
     form: FormGroupDirective | NgForm | null

@@ -26,10 +26,14 @@ export class UserComponent {
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   allUsers = [];
+
   constructor(public dialog: MatDialog, private appComponent: AppComponent) {
     this.setUserdToShow();
   }
 
+  /**
+   * This function will show the pagename
+   */
   setUserdToShow() {
     this.appComponent.dashboardPage = false;
     this.appComponent.privacyPage = false;
@@ -38,6 +42,9 @@ export class UserComponent {
     this.appComponent.userPage = true;
   }
 
+  /**
+   * Here i load the data from the user from firebase
+   */
   async ngOnInit() {
     const unsub = onSnapshot(collection(this.db, "users"), (querySnapshot) => {
       const usersData: User[] = [];
@@ -54,6 +61,9 @@ export class UserComponent {
     });
   }
 
+  /**
+   * To open the dialog to add a new user
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserComponent);
   }

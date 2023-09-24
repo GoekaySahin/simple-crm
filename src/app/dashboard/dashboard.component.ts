@@ -1,6 +1,6 @@
 import { Component, HostListener } from "@angular/core";
 import { AppComponent } from "../app.component";
-import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
+import { ChartConfiguration, ChartOptions } from "chart.js";
 
 @Component({
   selector: "app-dashboard",

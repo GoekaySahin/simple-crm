@@ -1,12 +1,7 @@
 import { Component, inject } from "@angular/core";
-import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatDialogRef } from "@angular/material/dialog";
 import { User } from "../models/user.class";
-import {
-  Firestore,
-  collection,
-  collectionData,
-  getFirestore,
-} from "@angular/fire/firestore";
+import { Firestore, collection, getFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { doc, setDoc } from "firebase/firestore";
 import { firebaseConfig } from "@environments/firebase-config";
@@ -20,7 +15,6 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class DialogAddUserComponent {
   user: User = new User();
-  //birthDate: Date;
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
   loading = false;
@@ -35,8 +29,13 @@ export class DialogAddUserComponent {
     public route: ActivatedRoute
   ) {}
 
+  /**
+   *
+   * This function is to save the new added user
+   *
+   * @returns if not filled
+   */
   async saveUser() {
-    //this.user.birthDate = this.birthDate.getTime();
     this.checkInput();
     if (this.filled == false) {
       return;
@@ -44,11 +43,14 @@ export class DialogAddUserComponent {
 
     this.loading = true;
     const aCollection = collection(this.firestore, "users");
-    await setDoc(doc(aCollection), this.user.toJSON()); // Die klasse muss in eine JSON umgewandelt werden (Manuel im models  )
+    await setDoc(doc(aCollection), this.user.toJSON());
     this.loading = false;
     this.closeDialogUsers();
   }
 
+  /**
+   * This function is to check if the something is typing in the input fileds
+   */
   checkInput() {
     if (
       (this.user.firstName.length > 1,
@@ -59,6 +61,9 @@ export class DialogAddUserComponent {
     }
   }
 
+  /**
+   * This function is to close the dialog to add a new user
+   */
   closeDialogUsers() {
     this.dialogRef.close();
   }

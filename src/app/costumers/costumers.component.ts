@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewChild, inject } from "@angular/core";
 import { AppComponent } from "../app.component";
 import { MatDialog } from "@angular/material/dialog";
-import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
 import { Costumer } from "../models/costumer.class";
 import { Observable } from "rxjs";
 import { firebaseConfig } from "@environments/firebase-config";

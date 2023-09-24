@@ -1,4 +1,4 @@
-import { Component, NgModule, inject } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { Costumer } from "../models/costumer.class";
 import {
   Firestore,
@@ -35,10 +35,16 @@ export class DialogEditCostumerAddressComponent {
     public route: ActivatedRoute
   ) {}
 
+  /**
+   * This function is to close the dialog to edit the costumer
+   */
   closeDialogUsers() {
     this.dialogRef.close();
   }
 
+  /**
+   * This function is to save the edited data from the costumer address
+   */
   async saveCostumer() {
     this.loading = true;
     const costumerRef = doc(this.db, "costumer", this.costumerId);
@@ -47,6 +53,9 @@ export class DialogEditCostumerAddressComponent {
     this.closeDialogUsers();
   }
 
+  /**
+   * This function is to cancel the edit process
+   */
   cancel() {
     this.closeDialogUsers();
   }
