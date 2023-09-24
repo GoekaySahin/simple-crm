@@ -40,6 +40,10 @@ export class CostumersComponent {
       this.mobile = false;
     }
   }
+
+  /**
+   * This function will show the pagename
+   */
   setCustomerToShow() {
     this.appComponent.costumerPage = true;
     this.appComponent.dashboardPage = false;
@@ -48,6 +52,9 @@ export class CostumersComponent {
     this.appComponent.userPage = false;
   }
 
+  /**
+   * Here i take the costumer data from firestore
+   */
   async ngOnInit() {
     const unsub = onSnapshot(
       collection(this.db, "costumer"),
@@ -66,7 +73,9 @@ export class CostumersComponent {
       }
     );
   }
-
+  /**
+   * This function is to open the dialog to add new costumer
+   */
   openDialogCostumer() {
     const dialogRef = this.dialog.open(DialogaddcostumerComponent);
   }

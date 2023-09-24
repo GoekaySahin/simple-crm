@@ -30,7 +30,7 @@ export class CostumerDetailComponent {
   db = getFirestore(this.app);
   costumerRef;
   unsubscribe;
-  costumer = new Costumer(); // wenn ich es nicht in eine klasse packe geht es zwar aber die konsole schmeißt ganze Zeit einen Fehler!
+  costumer = new Costumer();
   loading = false;
   empty: boolean = false;
 
@@ -41,8 +41,13 @@ export class CostumerDetailComponent {
     });
   }
 
+  /**
+   * This function will load the right costumer
+   *
+   * @param id number
+   */
   getUser(id) {
-    this.costumerRef = doc(this.db, "costumer", id); // user über doc geholt weil bei collect kann man keine id mitgeben
+    this.costumerRef = doc(this.db, "costumer", id);
     this.unsubscribe = onSnapshot(this.costumerRef, (docSnapshot) => {
       this.costumer = new Costumer(docSnapshot.data());
     });
@@ -51,18 +56,27 @@ export class CostumerDetailComponent {
     }, 1050);
   }
 
+  /**
+   * This function will open the dialog to edit the costumer data
+   */
   editMenu() {
     const dialog = this.dialog.open(DialogEditCostumerComponent);
     dialog.componentInstance.costumer = new Costumer(this.costumer);
     dialog.componentInstance.costumerId = this.costumerId;
   }
 
+  /**
+   * This function will open the dialog to edit the costumer address data
+   */
   editAddress() {
     const dialog = this.dialog.open(DialogEditCostumerAddressComponent);
     dialog.componentInstance.costumer = new Costumer(this.costumer);
     dialog.componentInstance.costumerId = this.costumerId;
   }
 
+  /**
+   * This function will check if the costumer has a notice to show
+   */
   checkIfNoticeEmpty() {
     if (this.costumer.notice.length == 0) {
       this.empty = true;
