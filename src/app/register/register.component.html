@@ -1,17 +1,17 @@
 <div class="registerbox">
   <mat-card>
     <mat-card-content>Register with email and password</mat-card-content>
-    <form class="example-form">
+    <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input
-          [(ngModel)]="email"
           type="email"
           matInput
           [formControl]="emailFormControl"
           [errorStateMatcher]="matcher"
           placeholder="Ex. pat@example.com"
         />
+        <mat-hint *ngIf="!emailValid">Enter E-Mail</mat-hint>
         <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
         <mat-error
           *ngIf="
@@ -29,20 +29,25 @@
       <p>
         <mat-form-field>
           <mat-label>Enter a password</mat-label>
-          <mat-hint>Please enter a password with 8 figurs</mat-hint>
 
-          <input
-            matInput
-            [(ngModel)]="password"
-            [ngModelOptions]="{ standalone: true }"
-          />
+          <input matInput />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-hint>Enter password figurs 8+</mat-hint>
         </mat-form-field>
       </p>
 
       <div class="buttonbox">
         <button
           mat-button
-          (click)="register()"
+          type="submit"
           *ngIf="emailValid && passwordEnterChecker()"
         >
           REGISTER

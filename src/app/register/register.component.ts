@@ -1,6 +1,12 @@
 import { Component } from "@angular/core";
 import { AuthServiceService } from "../services/auth-service.service";
-import { FormControl, Validators } from "@angular/forms";
+import {
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormGroup,
+} from "@angular/forms";
+
 import { MyErrorStateMatcher } from "../error-state-matche/error-state-matche.component";
 import { getAuth } from "firebase/auth";
 import { Router } from "@angular/router";
@@ -17,14 +23,21 @@ export class RegisterComponent {
   password: string;
   correct = false;
   emailValid = false;
+  hide = true;
   emailFormControl = new FormControl("", [
     Validators.required,
     Validators.email,
   ]);
+  form: FormGroup;
+  control: FormControl = new FormControl("value", Validators.minLength(2));
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private authService: AuthServiceService, private router: Router) {
+  constructor(
+    private authService: AuthServiceService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
     this.emailFormControl.valueChanges.subscribe((value) => {
       if (this.emailFormControl.valid) {
         this.handleValidEmail();
@@ -32,6 +45,16 @@ export class RegisterComponent {
         this.handleInvalidEmail();
       }
     });
+    this.form = fb.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
+    });
+  }
+
+  onSubmit() {
+    // Das Formular ist gültig, hier kannst du die Daten senden oder verarbeiten
+    const formData = this.form.value;
+    this.register(formData.email, formData.password);
   }
 
   /**
@@ -68,8 +91,8 @@ export class RegisterComponent {
   /**
    * This function is to register new user
    */
-  register() {
-    this.authService.creatUser(this.auth, this.email, this.password);
+  register(email, password) {
+    this.authService.creatUser(this.auth, email, password);
     this.correct = true;
     this.clearInputs();
     setTimeout(() => {

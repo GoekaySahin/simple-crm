@@ -13,8 +13,6 @@ import { MatMenuTrigger } from "@angular/material/menu";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogGuestLoginComponent } from "../dialog-guest-login/dialog-guest-login.component";
 import { Router } from "@angular/router";
-import { ConfigService } from "../services/config.service";
-import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-login",
@@ -40,7 +38,6 @@ export class LoginComponent {
   control: FormControl = new FormControl("value", Validators.minLength(2));
 
   async setValue() {
-    console.log(this.control.value);
     this.control.setValue("new value");
   }
 
@@ -57,8 +54,7 @@ export class LoginComponent {
     private authService: AuthServiceService,
     public dialog: MatDialog,
     private router: Router,
-    private fb: FormBuilder,
-    private http: HttpClient
+    private fb: FormBuilder
   ) {
     this.form = fb.group({
       email: ["", [Validators.required, Validators.email]],
@@ -69,7 +65,6 @@ export class LoginComponent {
   onSubmit() {
     // Das Formular ist gültig, hier kannst du die Daten senden oder verarbeiten
     const formData = this.form.value;
-    console.log(formData.email);
     this.login(formData.email, formData.password);
   }
 
