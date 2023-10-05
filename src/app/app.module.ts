@@ -53,13 +53,13 @@ import {
 import { ErrorStateMatcher } from "@angular/material/core";
 import { NgIf } from "@angular/common";
 import { LoginComponent } from "./login/login.component";
-import { AuthServiceService } from "./auth-service.service";
+import { AuthServiceService } from "./services/auth-service.service";
 import { RegisterComponent } from "./register/register.component";
 import { NgChartsModule } from "ng2-charts";
 import { DialogGuestLoginComponent } from "./dialog-guest-login/dialog-guest-login.component";
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
-import { PasswordEmailWrongComponent } from "./password-email-wrong/password-email-wrong.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -80,7 +80,6 @@ import { PasswordEmailWrongComponent } from "./password-email-wrong/password-ema
     DialogGuestLoginComponent,
     ImprintComponent,
     PrivacyComponent,
-    PasswordEmailWrongComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,6 +108,7 @@ import { PasswordEmailWrongComponent } from "./password-email-wrong/password-ema
     FirestoreModule,
     MatProgressBarModule,
     MatMenuModule,
+    HttpClientModule,
   ],
 
   providers: [

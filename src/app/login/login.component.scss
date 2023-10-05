@@ -10,16 +10,24 @@
     padding: 16px;
   }
 }
+.red {
+  color: red;
+}
 
 form {
   display: flex;
   flex-direction: column;
   padding: 16px 20px;
   gap: 12px;
+
+  mat-hint {
+    margin-inline: -18px;
+    letter-spacing: 1.5px;
+  }
 }
 
 mat-card-content {
-  padding: 16px 24px 16px;
+  padding: 16px 20px 16px;
   font-size: 19px;
   letter-spacing: 2px;
   font-weight: 500;

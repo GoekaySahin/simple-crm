@@ -1,16 +1,4 @@
 <div class="login-overlay">
-  <!--   <div class="loginFail">
-    <mat-card>
-      <mat-card-content class="login-fails">Login fail!</mat-card-content>
-
-      <span>No user with this email!</span>
-      <div mat-dialog-actions class="wrong-btn">
-        <button mat-button mat-dialog-close (click)="closeWrong()">
-          Close
-        </button>
-      </div>
-    </mat-card>
-  </div> -->
   <mat-card
     ><button
       class="dots"
@@ -21,37 +9,32 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-card-content>Access with email</mat-card-content>
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>Email</label>
+      <mat-form-field>
         <input
-          type="email"
           matInput
-          [formControl]="emailFormControl"
-          [errorStateMatcher]="matcher"
+          type="email"
           placeholder="Ex. pat@example.com"
-          [(ngModel)]="email"
+          formControlName="email"
         />
-        <mat-error
-          *ngIf="
-            emailFormControl.hasError('email') &&
-            !emailFormControl.hasError('required')
-          "
-        >
-          Please enter a valid email address
-        </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-          Email is <strong>required</strong>
-        </mat-error>
+        <mat-hint *ngIf="form.get('email').hasError('required') && !loginFail">
+          Email is required
+        </mat-hint>
+        <mat-hint *ngIf="form.get('email').hasError('email') && !loginFail">
+          Invalid email format
+        </mat-hint>
+        <mat-hint class="red" *ngIf="loginFail"> E-Maill is wrong! </mat-hint>
       </mat-form-field>
 
+      <label>Password</label>
       <mat-form-field>
         <mat-label>Enter your password</mat-label>
         <input
           matInput
           [type]="hide ? 'password' : 'text'"
-          [(ngModel)]="password"
-          [ngModelOptions]="{ standalone: true }"
+          formControlName="password"
         />
         <button
           mat-icon-button
@@ -62,22 +45,21 @@
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
+        <mat-hint class="red" *ngIf="loginFail"> Password is wrong! </mat-hint>
+        <mat-hint
+          *ngIf="form.get('password').hasError('required') && !loginFail"
+        >
+          Password is required
+        </mat-hint>
+        <mat-hint
+          *ngIf="form.get('password').hasError('minlength') && !loginFail"
+        >
+          Password must be 8+ characters
+        </mat-hint>
       </mat-form-field>
       <div class="btnbox">
-        <button
-          *ngIf="!emailValid || !passwordEnterChecker()"
-          mat-raised-button
-          disabled
-        >
-          OK
-        </button>
-        <button
-          *ngIf="emailValid && passwordEnterChecker()"
-          mat-button
-          (click)="login()"
-        >
-          OK
-        </button>
+        <button *ngIf="!this.form.valid" mat-raised-button disabled>OK</button>
+        <button *ngIf="this.form.valid" mat-button type="submit">OK</button>
         <button mat-button [routerLink]="['/register']">REGISTER</button>
       </div>
     </form>

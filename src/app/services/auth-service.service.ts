@@ -25,7 +25,7 @@ export class AuthServiceService {
   auth = getAuth();
   loginData = false;
 
-  creatUser(auth, email, password) {
+  async creatUser(auth, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -36,7 +36,7 @@ export class AuthServiceService {
       });
   }
 
-  signInWithEmail(auth, email, password) {
+  async signInWithEmail(auth, email, password) {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -44,8 +44,7 @@ export class AuthServiceService {
         return this.loginData;
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        console.log(error.code);
         this.loginData = false;
         return this.loginData;
       });

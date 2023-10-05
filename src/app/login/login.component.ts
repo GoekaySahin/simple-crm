@@ -1,13 +1,20 @@
 import { Component, ViewChild } from "@angular/core";
 import { getAuth } from "firebase/auth";
 import { MyErrorStateMatcher } from "../error-state-matche/error-state-matche.component";
-import { FormControl, Validators } from "@angular/forms";
-import { AuthServiceService } from "../auth-service.service";
+import {
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormGroup,
+} from "@angular/forms";
+import { AuthServiceService } from "../services/auth-service.service";
 import { UserLogin } from "../models/userLogin.class";
 import { MatMenuTrigger } from "@angular/material/menu";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogGuestLoginComponent } from "../dialog-guest-login/dialog-guest-login.component";
 import { Router } from "@angular/router";
+import { ConfigService } from "../services/config.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-login",
@@ -24,10 +31,19 @@ export class LoginComponent {
   hide = true;
   auth = getAuth();
   loginData = false;
-  emailFormControl = new FormControl("", [
+  loginFail = false;
+  /*   emailFormControl = new FormControl("", [
     Validators.required,
     Validators.email,
-  ]);
+  ]); */
+  form: FormGroup;
+  control: FormControl = new FormControl("value", Validators.minLength(2));
+
+  async setValue() {
+    console.log(this.control.value);
+    this.control.setValue("new value");
+  }
+
   matcher = new MyErrorStateMatcher();
 
   /**
@@ -40,15 +56,21 @@ export class LoginComponent {
   constructor(
     private authService: AuthServiceService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder,
+    private http: HttpClient
   ) {
-    this.emailFormControl.valueChanges.subscribe((value) => {
-      if (this.emailFormControl.valid) {
-        this.handleValidEmail();
-      } else {
-        this.handleInvalidEmail();
-      }
+    this.form = fb.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
     });
+  }
+
+  onSubmit() {
+    // Das Formular ist gültig, hier kannst du die Daten senden oder verarbeiten
+    const formData = this.form.value;
+    console.log(formData.email);
+    this.login(formData.email, formData.password);
   }
 
   closeWrong() {
@@ -79,15 +101,28 @@ export class LoginComponent {
   /**
    * This function will check the logindata
    */
-  async login() {
+  async login(email, password) {
     let correct = await this.authService.signInWithEmail(
       this.auth,
-      this.email,
-      this.password
+      email,
+      password
     );
     if (correct) {
       this.router.navigate(["dashboard"]);
+    } else {
+      this.loginFail = true;
+      this.clearInputs();
+      setTimeout(() => {
+        this.loginFail = false;
+      }, 3200);
     }
+  }
+
+  clearInputs() {
+    this.form = this.fb.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(8)]],
+    });
   }
 
   /**

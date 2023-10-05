@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { AuthServiceService } from "../auth-service.service";
+import { AuthServiceService } from "../services/auth-service.service";
 import { FormControl, Validators } from "@angular/forms";
 import { MyErrorStateMatcher } from "../error-state-matche/error-state-matche.component";
 import { getAuth } from "firebase/auth";

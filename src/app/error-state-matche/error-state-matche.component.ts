@@ -14,7 +14,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   /**
-   * This function controlls the input if it is a correct email
+   * This function controlls the input if it is a correct email form
    *
    * @param control json
    * @param form json
