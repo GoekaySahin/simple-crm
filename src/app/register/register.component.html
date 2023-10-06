@@ -59,13 +59,14 @@
           REGISTER
         </button>
         <button
+          type="button"
           mat-raised-button
           disabled
           *ngIf="!emailValid || !passwordEnterChecker()"
         >
           REGSITER
         </button>
-        <button mat-button (click)="toLogin()">BACK</button>
+        <button type="button" mat-button (click)="toLogin()">BACK</button>
       </div>
     </form>
   </mat-card>

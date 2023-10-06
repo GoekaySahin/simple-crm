@@ -2,6 +2,7 @@
   <mat-card
     ><button
       class="dots"
+      type="button"
       mat-icon-button
       aria-label="Example icon button with a vertical three dot icon"
       (click)="openDialog()"
@@ -63,9 +64,18 @@
         </mat-hint>
       </mat-form-field>
       <div class="btnbox">
-        <button *ngIf="!this.form.valid" mat-raised-button disabled>OK</button>
+        <button
+          type="button"
+          *ngIf="!this.form.valid"
+          mat-raised-button
+          disabled
+        >
+          OK
+        </button>
         <button *ngIf="this.form.valid" mat-button type="submit">OK</button>
-        <button mat-button [routerLink]="['/register']">REGISTER</button>
+        <button type="button" mat-button [routerLink]="['/register']">
+          REGISTER
+        </button>
       </div>
     </form>
   </mat-card>
