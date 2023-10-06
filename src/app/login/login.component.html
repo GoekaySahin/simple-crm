@@ -13,19 +13,23 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <!--   <label>Email</label> -->
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input
           matInput
           type="email"
           placeholder="Ex. pat@example.com"
           formControlName="email"
+          [errorStateMatcher]="matcher"
         />
+        <mat-error> Enter correct <strong>E-Mail</strong> </mat-error>
+        <!-- 
         <mat-hint *ngIf="form.get('email').hasError('required') && !loginFail">
           Email is required
         </mat-hint>
         <mat-hint *ngIf="form.get('email').hasError('email') && !loginFail">
           Invalid email format
         </mat-hint>
-        <mat-hint class="red" *ngIf="loginFail"> E-Maill is wrong! </mat-hint>
+        <mat-hint class="red" *ngIf="loginFail"> E-Maill is wrong! </mat-hint> -->
       </mat-form-field>
 
       <!--  <label>Password</label> -->
