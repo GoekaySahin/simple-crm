@@ -25,6 +25,11 @@
     mat-form-field {
       width: 100%;
     }
+
+    mat-hint {
+      margin-inline: -10px;
+      letter-spacing: 1.5px;
+    }
   }
 
   .buttonbox {

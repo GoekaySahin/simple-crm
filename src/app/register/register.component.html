@@ -26,23 +26,24 @@
         </mat-error>
       </mat-form-field>
 
-      <p>
-        <mat-form-field>
-          <mat-label>Enter a password</mat-label>
-
-          <input matInput />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
-          <mat-hint>Enter password figurs 8+</mat-hint>
-        </mat-form-field>
-      </p>
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          [formControl]="password"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
 
       <div class="buttonbox">
         <button
@@ -59,7 +60,6 @@
         >
           REGSITER
         </button>
-
         <button mat-button (click)="toLogin()">BACK</button>
       </div>
     </form>

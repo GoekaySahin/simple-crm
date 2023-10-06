@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { AuthServiceService } from "../services/auth-service.service";
 import {
   FormControl,
@@ -17,10 +17,10 @@ import { Router } from "@angular/router";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent {
-  email: string;
+  email = new FormControl("");
   auth = getAuth();
   user: string;
-  password: string;
+  password = new FormControl("");
   correct = false;
   emailValid = false;
   hide = true;
@@ -32,6 +32,7 @@ export class RegisterComponent {
   control: FormControl = new FormControl("value", Validators.minLength(2));
 
   matcher = new MyErrorStateMatcher();
+  passwordInput: boolean = false;
 
   constructor(
     private authService: AuthServiceService,
@@ -53,8 +54,7 @@ export class RegisterComponent {
 
   onSubmit() {
     // Das Formular ist gültig, hier kannst du die Daten senden oder verarbeiten
-    const formData = this.form.value;
-    this.register(formData.email, formData.password);
+    this.register(this.emailFormControl.value, this.password.value);
   }
 
   /**
@@ -63,7 +63,6 @@ export class RegisterComponent {
   handleValidEmail() {
     this.emailValid = true;
   }
-
   /**
    * This function handle the wrong email
    */
@@ -75,10 +74,7 @@ export class RegisterComponent {
    * This function check if password is define
    */
   passwordEnterChecker() {
-    if (this.password == undefined) {
-      return "";
-    }
-    return this.password.length > 7;
+    return this.password.value.length > 7;
   }
 
   /**
@@ -94,7 +90,7 @@ export class RegisterComponent {
   register(email, password) {
     this.authService.creatUser(this.auth, email, password);
     this.correct = true;
-    this.clearInputs();
+    //this.clearInputs();
     setTimeout(() => {
       this.toLogin();
     }, 1800);
@@ -111,7 +107,7 @@ export class RegisterComponent {
    * This function will clear the input fileds
    */
   clearInputs() {
-    this.email = "";
-    this.password = "";
+    this.email.setValue("");
+    this.password.setValue("");
   }
 }

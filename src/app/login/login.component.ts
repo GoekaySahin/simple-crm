@@ -68,10 +68,6 @@ export class LoginComponent {
     this.login(formData.email, formData.password);
   }
 
-  closeWrong() {
-    /* this.fail = false; */
-  }
-
   /**
    * This function handle the right email
    */
