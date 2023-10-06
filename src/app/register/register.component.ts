@@ -29,7 +29,7 @@ export class RegisterComponent {
     Validators.email,
   ]);
   form: FormGroup;
-  control: FormControl = new FormControl("value", Validators.minLength(2));
+  control: FormControl = new FormControl("value", Validators.minLength(8));
 
   matcher = new MyErrorStateMatcher();
   passwordInput: boolean = false;

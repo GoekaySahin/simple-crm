@@ -51,11 +51,11 @@
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
         <mat-hint class="red" *ngIf="loginFail"> Password is wrong! </mat-hint>
-        <mat-hint
+        <!--  <mat-hint
           *ngIf="form.get('password').hasError('required') && !loginFail"
         >
           Password is required
-        </mat-hint>
+        </mat-hint> -->
         <mat-hint
           *ngIf="form.get('password').hasError('minlength') && !loginFail"
         >

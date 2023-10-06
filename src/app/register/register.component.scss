@@ -26,8 +26,9 @@
       width: 100%;
     }
 
-    mat-hint {
-      margin-inline: -10px;
+    mat-hint,
+    mat-error {
+      margin-inline: -16px;
       letter-spacing: 1.5px;
     }
   }
