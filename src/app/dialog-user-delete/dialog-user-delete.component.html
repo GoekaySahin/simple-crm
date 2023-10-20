@@ -1,7 +1,10 @@
 <div class="dialogName">
   <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   <div mat-dialog-content>
-    <h3>Delete user {{ user.firstName }}, {{ user.lastName }}?</h3>
+    <h3 *ngIf="userMessage">
+      Delete user {{ user.firstName }}, {{ user.lastName }}?
+    </h3>
+    <h3 *ngIf="costumerMessage">Delete costumer {{ costumer.name }}</h3>
 
     <div mat-dialog-actions ngClass="sb">
       <button (click)="deleteUser()" mat-button>yes</button>

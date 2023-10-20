@@ -72,5 +72,6 @@ export class UserDetailComponent {
     const dialog = this.dialog.open(DialogUserDeleteComponent);
     dialog.componentInstance.user = new User(this.user);
     dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.userMessage = true;
   }
 }

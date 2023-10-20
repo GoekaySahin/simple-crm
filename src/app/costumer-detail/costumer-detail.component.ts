@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, OnDestroy, inject } from "@angular/core";
 import { initializeApp } from "@angular/fire/app";
 import {
   Firestore,
@@ -13,13 +13,15 @@ import { Observable } from "rxjs";
 import { Costumer } from "../models/costumer.class";
 import { DialogEditCostumerComponent } from "../dialog-edit-costumer/dialog-edit-costumer.component";
 import { DialogEditCostumerAddressComponent } from "../dialog-edit-costumer-address/dialog-edit-costumer-address.component";
+import { DialogUserDeleteComponent } from "../dialog-user-delete/dialog-user-delete.component";
+import { User } from "../models/user.class";
 
 @Component({
   selector: "app-costumer-detail",
   templateUrl: "./costumer-detail.component.html",
   styleUrls: ["./costumer-detail.component.scss"],
 })
-export class CostumerDetailComponent {
+export class CostumerDetailComponent implements OnDestroy {
   costumerId: string;
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
@@ -80,5 +82,19 @@ export class CostumerDetailComponent {
     } else {
       this.empty = false;
     }
+  }
+
+  deleteCostumer() {
+    const dialog = this.dialog.open(DialogUserDeleteComponent);
+    const message = (dialog.componentInstance.costumerMessage = true);
+    console.log(this.costumer);
+    dialog.componentInstance.costumer = new Costumer(this.costumer);
+    dialog.componentInstance.costumerId = this.costumerId;
+  }
+
+  ngOnDestroy(): void {
+    /*   this.dialog.open(
+      DialogUserDeleteComponent
+    ).componentInstance.costumerMessage = false; */
   }
 }

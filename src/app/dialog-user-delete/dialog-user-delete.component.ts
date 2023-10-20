@@ -5,6 +5,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { firebaseConfig } from "@environments/firebase-config";
 import { doc, deleteDoc } from "firebase/firestore";
+import { Costumer } from "../models/costumer.class";
 
 @Component({
   selector: "app-dialog-user-delete",
@@ -16,20 +17,25 @@ export class DialogUserDeleteComponent implements OnInit {
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   user;
+  costumer: Costumer;
+  costumerId;
   userId;
   loading = false;
+  userMessage = false;
+  costumerMessage = false;
 
   constructor(private router: Router, private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("from init: ", this.costumer);
+  }
 
   async deleteUser() {
-    console.log(this.user);
-    debugger;
-    console.log(await deleteDoc(doc(this.db, "users", this.userId)));
     this.router.navigate(["user"]);
     this.dialog.closeAll();
   }
 
-  closeDialog() {}
+  closeDialog() {
+    this.dialog.closeAll();
+  }
 }
