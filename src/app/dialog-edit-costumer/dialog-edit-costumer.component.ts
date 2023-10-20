@@ -45,7 +45,7 @@ export class DialogEditCostumerComponent {
    */
   async saveCostumer() {
     this.loading = true;
-    const userRef = doc(this.db, "users", this.costumerId);
+    const userRef = doc(this.db, "costumer", this.costumerId);
     await updateDoc(userRef, this.costumer.toJSON());
     this.loading = false;
     this.closeDialogUsers();
