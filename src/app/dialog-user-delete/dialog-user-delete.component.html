@@ -1,0 +1,11 @@
+<div class="dialogName">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <div mat-dialog-content>
+    <h3>Delete user {{ user.firstName }}, {{ user.lastName }}?</h3>
+
+    <div mat-dialog-actions ngClass="sb">
+      <button (click)="deleteUser()" mat-button>yes</button>
+      <button mat-button (click)="closeDialog()">Cancel</button>
+    </div>
+  </div>
+</div>

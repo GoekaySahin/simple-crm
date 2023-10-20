@@ -13,6 +13,7 @@ import { Observable } from "rxjs";
 import { User } from "../models/user.class";
 import { DialogEditAddressComponent } from "../dialog-edit-address/dialog-edit-address.component";
 import { DialogEditUserComponent } from "../dialog-edit-user/dialog-edit-user.component";
+import { DialogUserDeleteComponent } from "../dialog-user-delete/dialog-user-delete.component";
 
 @Component({
   selector: "app-user-detail",
@@ -63,6 +64,12 @@ export class UserDetailComponent {
    */
   editAddress() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = new User(this.user);
+    dialog.componentInstance.userId = this.userId;
+  }
+
+  deleteUser() {
+    const dialog = this.dialog.open(DialogUserDeleteComponent);
     dialog.componentInstance.user = new User(this.user);
     dialog.componentInstance.userId = this.userId;
   }

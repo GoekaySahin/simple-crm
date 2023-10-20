@@ -1,6 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { User } from "../models/user.class";
 import {
+  DocumentReference,
   Firestore,
   doc,
   getFirestore,
@@ -23,8 +24,7 @@ export class DialogEditAddressComponent {
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
-  userRef;
-  unsubscribe;
+  userRef: DocumentReference;
   user = new User();
   loading = false;
 

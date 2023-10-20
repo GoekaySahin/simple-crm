@@ -60,6 +60,7 @@ import { DialogGuestLoginComponent } from "./dialog-guest-login/dialog-guest-log
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
 import { HttpClientModule } from "@angular/common/http";
+import { DialogUserDeleteComponent } from './dialog-user-delete/dialog-user-delete.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { HttpClientModule } from "@angular/common/http";
     DialogGuestLoginComponent,
     ImprintComponent,
     PrivacyComponent,
+    DialogUserDeleteComponent,
   ],
   imports: [
     BrowserModule,
