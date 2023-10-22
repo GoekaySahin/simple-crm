@@ -78,14 +78,4 @@ export class AuthServiceService {
       localStorage.setItem("token", JSON.stringify(res.user?.uid));
     });
   }
-
-  /*   googleSignIn = async () => {
-    const provider = new GoogleAuthProvider(); // Use 'GoogleAuthProvider' directly
-    provider.setCustomParameters({ prompt: "select_account" });
-    try {
-      await this.fireauth.signInWithPopup(provider); // Use 'provider' directly here
-    } catch (error) {
-      alert(error.message);
-    }
-  }; */
 }

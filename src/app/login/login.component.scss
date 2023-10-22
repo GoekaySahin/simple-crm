@@ -6,6 +6,11 @@
   justify-content: center;
   align-items: center;
 
+  .bg {
+    position: absolute;
+    inset: 0;
+  }
+
   mat-card {
     padding: 16px;
   }
@@ -20,6 +25,7 @@
   align-items: self-end;
   gap: 10px;
   justify-content: center;
+  margin-top: 8px;
 }
 
 form {
@@ -46,7 +52,7 @@ mat-card-content {
 .btnbox {
   display: flex;
   justify-content: space-between;
-  padding-top: 24px;
+  padding-top: 2px;
 
   button {
     font-size: 15px;
