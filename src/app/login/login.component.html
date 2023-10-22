@@ -12,7 +12,6 @@
     <mat-card-content>Access with email</mat-card-content>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <!--   <label>Email</label> -->
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input
@@ -23,17 +22,8 @@
           [errorStateMatcher]="matcher"
         />
         <mat-error> Enter correct <strong>E-Mail</strong> </mat-error>
-        <!-- 
-        <mat-hint *ngIf="form.get('email').hasError('required') && !loginFail">
-          Email is required
-        </mat-hint>
-        <mat-hint *ngIf="form.get('email').hasError('email') && !loginFail">
-          Invalid email format
-        </mat-hint>
-        <mat-hint class="red" *ngIf="loginFail"> E-Maill is wrong! </mat-hint> -->
       </mat-form-field>
 
-      <!--  <label>Password</label> -->
       <mat-form-field>
         <mat-label>Enter your password</mat-label>
         <input
@@ -52,11 +42,7 @@
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
         <mat-hint class="red" *ngIf="loginFail"> Password is wrong! </mat-hint>
-        <!--  <mat-hint
-          *ngIf="form.get('password').hasError('required') && !loginFail"
-        >
-          Password is required
-        </mat-hint> -->
+
         <mat-hint
           *ngIf="form.get('password').hasError('minlength') && !loginFail"
         >

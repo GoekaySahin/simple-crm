@@ -11,24 +11,21 @@ import {
 import { Observable, Subscription } from "rxjs";
 import { GoogleAuthProvider } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import { Auth, User, user } from "@angular/fire/auth";
-
-const provider = new GoogleAuthProvider();
+import { AngularFireAuth } from "@angular/fire/compat/auth";
 
 @Injectable({
   providedIn: "root",
 })
-export class AuthServiceService implements OnDestroy {
+export class AuthServiceService {
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   auth = getAuth();
   loginData = false;
-  user$ = user(this.auth);
-  userSubscription: Subscription;
+  provider = new GoogleAuthProvider();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private fireauth: AngularFireAuth) {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         const uid = user.uid;
@@ -39,10 +36,6 @@ export class AuthServiceService implements OnDestroy {
         console.log("User logged out else");
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
   }
 
   async creatUser(auth, email, password) {
@@ -76,5 +69,18 @@ export class AuthServiceService implements OnDestroy {
         this.loginData = false;
         return this.loginData;
       });
+  }
+
+  //sign in with google
+  googleSignIn() {
+    return this.fireauth.signInWithPopup(new GoogleAuthProvider()).then(
+      (res) => {
+        this.router.navigate(["/dashboard"]);
+        localStorage.setItem("token", JSON.stringify(res.user?.uid));
+      },
+      (err) => {
+        alert(err.message);
+      }
+    );
   }
 }

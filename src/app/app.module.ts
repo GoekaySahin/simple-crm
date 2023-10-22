@@ -60,7 +60,9 @@ import { DialogGuestLoginComponent } from "./dialog-guest-login/dialog-guest-log
 import { ImprintComponent } from "./imprint/imprint.component";
 import { PrivacyComponent } from "./privacy/privacy.component";
 import { HttpClientModule } from "@angular/common/http";
-import { DialogUserDeleteComponent } from './dialog-user-delete/dialog-user-delete.component';
+import { DialogUserDeleteComponent } from "./dialog-user-delete/dialog-user-delete.component";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireModule } from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
@@ -107,6 +109,9 @@ import { DialogUserDeleteComponent } from './dialog-user-delete/dialog-user-dele
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireModule,
     FirestoreModule,
     MatProgressBarModule,
     MatMenuModule,
