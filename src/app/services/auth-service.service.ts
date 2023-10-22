@@ -72,15 +72,20 @@ export class AuthServiceService {
   }
 
   //sign in with google
-  googleSignIn() {
-    return this.fireauth.signInWithPopup(new GoogleAuthProvider()).then(
-      (res) => {
-        this.router.navigate(["/dashboard"]);
-        localStorage.setItem("token", JSON.stringify(res.user?.uid));
-      },
-      (err) => {
-        alert(err.message);
-      }
-    );
+  async googleSignIn() {
+    return await this.fireauth.signInWithPopup(this.provider).then((res) => {
+      this.router.navigate(["/dashboard"]);
+      localStorage.setItem("token", JSON.stringify(res.user?.uid));
+    });
   }
+
+  /*   googleSignIn = async () => {
+    const provider = new GoogleAuthProvider(); // Use 'GoogleAuthProvider' directly
+    provider.setCustomParameters({ prompt: "select_account" });
+    try {
+      await this.fireauth.signInWithPopup(provider); // Use 'provider' directly here
+    } catch (error) {
+      alert(error.message);
+    }
+  }; */
 }

@@ -132,4 +132,8 @@ export class LoginComponent {
     });
     dialogRef.afterClosed().subscribe();
   }
+
+  signInWithGoogle() {
+    this.authService.googleSignIn();
+  }
 }

@@ -22,9 +22,4 @@ export class DialogGuestLoginComponent {
     this.router.navigate(["dashboard"]);
     this.dialog.closeAll();
   }
-
-  signInWithGoogle() {
-    this.authService.googleSignIn();
-    this.dialog.closeAll();
-  }
 }
