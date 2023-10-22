@@ -1,16 +1,8 @@
-export class UserLogin {
-  email: string;
-  password: string;
+import { Meta } from "@angular/platform-browser";
+import { User } from "./user.class";
 
-  constructor(obj?: any) {
-    this.email = obj ? obj.email : "";
-    this.password = obj ? obj.password : "";
-  }
-
-  public toJSON() {
-    return {
-      email: this.email,
-      password: this.password,
-    };
-  }
+export class UserLogin extends User {
+  emailVerified: boolean;
+  isAnonymous: boolean;
+  metadata: Meta;
 }
