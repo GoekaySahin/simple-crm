@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { getAuth } from "firebase/auth";
 import { MyErrorStateMatcher } from "../error-state-matche/error-state-matche.component";
 import {
@@ -13,13 +13,14 @@ import { MatMenuTrigger } from "@angular/material/menu";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogGuestLoginComponent } from "../dialog-guest-login/dialog-guest-login.component";
 import { Router } from "@angular/router";
+import { GoogleLoginService } from "../services/google-login.service";
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @ViewChild("menuTrigger") menuTrigger: MatMenuTrigger;
   userLogin = new UserLogin();
   email: any;
@@ -54,13 +55,15 @@ export class LoginComponent {
     private authService: AuthServiceService,
     public dialog: MatDialog,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private google_login: GoogleLoginService
   ) {
     this.form = fb.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(8)]],
     });
   }
+  ngOnInit(): void {}
 
   onSubmit() {
     // Das Formular ist gültig, hier kannst du die Daten senden oder verarbeiten
@@ -134,6 +137,6 @@ export class LoginComponent {
   }
 
   signInWithGoogle() {
-    this.authService.googleSignIn();
+    this.google_login.googleLogin();
   }
 }

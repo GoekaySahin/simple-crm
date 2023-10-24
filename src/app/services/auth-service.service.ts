@@ -18,7 +18,6 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 })
 export class AuthServiceService {
   firestore: Firestore = inject(Firestore);
-  items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   auth = getAuth();
@@ -29,11 +28,9 @@ export class AuthServiceService {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         const uid = user.uid;
-        console.log(user);
       } else {
         this.router.navigate([""]);
         this.auth.signOut();
-        console.log("User logged out else");
       }
     });
   }
@@ -57,9 +54,6 @@ export class AuthServiceService {
         onAuthStateChanged(this.auth, (user) => {
           if (user) {
             const uid = user.uid;
-            console.log(user);
-          } else {
-            console.log("User logged out");
           }
         });
         return this.loginData;

@@ -63,6 +63,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { DialogUserDeleteComponent } from "./dialog-user-delete/dialog-user-delete.component";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireModule } from "@angular/fire/compat";
+import { GoogleLoginService } from "./services/google-login.service";
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { AngularFireModule } from "@angular/fire/compat";
     FormControl,
     ErrorStateMatcher,
     NgIf,
+    GoogleLoginService,
   ],
   bootstrap: [AppComponent],
 })

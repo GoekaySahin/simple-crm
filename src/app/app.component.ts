@@ -2,6 +2,7 @@ import { Component, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { MatDrawer } from "@angular/material/sidenav";
 import { AuthServiceService } from "./services/auth-service.service";
+import { GoogleLoginService } from "./services/google-login.service";
 
 @Component({
   selector: "app-root",
@@ -15,7 +16,10 @@ export class AppComponent {
   userPage = false;
   dashboardPage = false;
 
-  constructor(private router: Router, private service: AuthServiceService) {}
+  constructor(
+    private router: Router,
+    private google_login: GoogleLoginService
+  ) {}
   @ViewChild("drawer") drawer!: MatDrawer;
 
   toDashboard() {
@@ -45,8 +49,7 @@ export class AppComponent {
 
   logout() {
     this.router.navigate([""]);
-    this.service.auth.signOut();
-    console.log("User signed out!");
+    this.google_login.auth.signOut();
     this.drawer.toggle();
   }
 }
