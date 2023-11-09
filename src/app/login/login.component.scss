@@ -110,9 +110,15 @@ mat-label {
 }
 
 @media (width <= 450px) {
-  .login-overlay[_ngcontent-ng-c1503587658] mat-card[_ngcontent-ng-c1503587658] {
+  .login-overlay mat-card {
     padding: 16px;
-
+    font-size: 11px;
     width: 90% !important;
   }
+
+  mat-label[_ngcontent-ng-c1503587658] {
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
 }
