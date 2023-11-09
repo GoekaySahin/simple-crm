@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from "@angular/core";
+import { Component, HostListener, OnDestroy, OnInit, inject } from "@angular/core";
 import { initializeApp } from "@angular/fire/app";
 import {
   Firestore,
@@ -21,7 +21,7 @@ import { User } from "../models/user.class";
   templateUrl: "./costumer-detail.component.html",
   styleUrls: ["./costumer-detail.component.scss"],
 })
-export class CostumerDetailComponent implements OnDestroy {
+export class CostumerDetailComponent implements OnDestroy, OnInit {
   costumerId: string;
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
@@ -32,6 +32,8 @@ export class CostumerDetailComponent implements OnDestroy {
   costumer = new Costumer();
   loading = false;
   empty: boolean = false;
+  mobile = false;
+  getScreenWidth: number;
 
   constructor(public dialog: MatDialog, public route: ActivatedRoute) {
     this.route.paramMap.subscribe((paramMap) => {
@@ -39,6 +41,22 @@ export class CostumerDetailComponent implements OnDestroy {
       this.getUser(this.costumerId);
     });
   }
+
+  ngOnInit(): void {
+    this.getScreenWidth = window.innerWidth;
+    if(this.getScreenWidth < 450) {
+      this.mobile = true;
+    }
+  }
+
+  
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
+    if(this.getScreenWidth < 450) {
+      this.mobile = true;
+    }
+  } 
 
   /**
    * This function will load the right costumer

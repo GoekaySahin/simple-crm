@@ -50,3 +50,12 @@
   gap: 4px;
   margin-inline-start: -1px;
 }
+
+@media (width <= 450px) {
+  .user-head .user-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-direction: column;
+  }
+}

@@ -50,3 +50,30 @@ table {
   display: block;
   padding: 0;
 }
+
+@media (width <= 650px) {
+
+  table {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 20px;
+
+  }
+    tr {
+      display: flex;
+      flex-direction: column;
+    }
+
+    td {
+      height: 53px;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .mat-drawer-content {
+    overflow: hidden !important;
+  }
+    
+  
+  }

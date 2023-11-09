@@ -27,7 +27,7 @@ export class GoogleLoginService {
 
   /*   
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //sign in with google redirect works, but it redirect first to /login than to /dashboard after 1 or 2 sec.
+  //sign in with google redirect works, but it redirect first to /login back than after 1 or 2 sec. to /dashboard 
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
   googleSignIn() {
     return this.fireauth.signInWithRedirect(this.provider).then((res) => {

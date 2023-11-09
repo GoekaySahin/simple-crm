@@ -45,3 +45,17 @@ table {
 .pad8 {
   padding: 0px 8px;
 }
+
+@media (width <= 750px) {
+  
+  .mat-drawer-content {
+    overflow: hidden !important;
+  }
+}
+
+@media (width <= 450px) {
+  table {
+    font-size: 14px;
+  }
+
+}

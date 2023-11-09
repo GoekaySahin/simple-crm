@@ -1,8 +1,8 @@
-import { Component, inject } from "@angular/core";
+import { Component, HostListener, OnInit, inject } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogAddUserComponent } from "../dialog-add-user/dialog-add-user.component";
 import { User } from "../models/user.class";
-import { Observable } from "rxjs";
+import { Observable, debounceTime, fromEvent } from "rxjs";
 import { firebaseConfig } from "@environments/firebase-config";
 
 import {
@@ -19,17 +19,31 @@ import { AppComponent } from "../app.component";
   templateUrl: "./user.component.html",
   styleUrls: ["./user.component.scss"],
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
   user: User = new User();
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
   app = initializeApp(firebaseConfig);
   db = getFirestore(this.app);
   allUsers = [];
+  mobile:boolean = false;
+  getScreenWidth: number;
 
   constructor(public dialog: MatDialog, private appComponent: AppComponent) {
     this.setUserdToShow();
+
   }
+
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
+    if(this.getScreenWidth < 450) {
+      this.mobile = true;
+    }
+  } 
+
+  
 
   /**
    * This function will show the pagename
@@ -59,6 +73,10 @@ export class UserComponent {
 
       this.allUsers = usersData;
     });
+    this.getScreenWidth = window.innerWidth;
+    if(this.getScreenWidth < 450) {
+      this.mobile = true;
+    }
   }
 
   /**
@@ -68,3 +86,5 @@ export class UserComponent {
     const dialogRef = this.dialog.open(DialogAddUserComponent);
   }
 }
+
+

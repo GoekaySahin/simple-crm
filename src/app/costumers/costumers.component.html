@@ -12,8 +12,9 @@
           *ngFor="let costumer of allCostumer"
           [routerLink]="['/costumer/' + costumer.id]"
         >
-          <td>{{ costumer.name }}</td>
-          <td>{{ costumer.email }}</td>
+          <td *ngIf="!mobile">{{ costumer.name }}</td>
+          <td *ngIf="!mobile">{{ costumer.email }}</td>
+          <td *ngIf="mobile"><span>{{ costumer.name }}</span> <br> <span>{{ costumer.email }}</span></td>
           <td *ngIf="!mobile">{{ costumer.city }}</td>
           <td *ngIf="!mobile">{{ costumer.contactperson }}</td>
         </tr>

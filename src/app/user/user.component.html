@@ -2,12 +2,12 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>City</th>
+      <th *ngIf="!mobile">City</th>
       <th>E-mail</th>
     </tr>
     <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
       <td>{{ user.lastName }}</td>
-      <td>{{ user.city }}</td>
+      <td *ngIf="!mobile">{{ user.city }}</td>
       <td>{{ user.email }}</td>
     </tr>
   </table>

@@ -15,6 +15,7 @@ export class AppComponent {
   costumerPage = false;
   userPage = false;
   dashboardPage = false;
+  
 
   constructor(
     private router: Router,

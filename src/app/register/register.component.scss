@@ -102,3 +102,22 @@ mat-card {
     transform: scale(1);
   }
 }
+
+
+
+@media (width <= 450px) {
+  .registerbox form mat-label {
+    letter-spacing: 2px;
+    font-size: 11px;
+  }
+
+  .mat-mdc-card  {
+    width: 90%;
+  }
+
+  mat-card-content {
+    width: 238px;
+    margin-inline: 5px;
+    font-size: 16px;
+  }
+}

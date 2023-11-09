@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, inject } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild, inject } from "@angular/core";
 import { AppComponent } from "../app.component";
 import { MatDialog } from "@angular/material/dialog";
 import { Costumer } from "../models/costumer.class";
@@ -18,7 +18,7 @@ import { DialogaddcostumerComponent } from "../dialogaddcostumer/dialogaddcostum
   templateUrl: "./costumers.component.html",
   styleUrls: ["./costumers.component.scss"],
 })
-export class CostumersComponent {
+export class CostumersComponent implements OnInit{
   @ViewChild("myButton") myButton: ElementRef;
 
   costumer: Costumer = new Costumer();
@@ -32,7 +32,7 @@ export class CostumersComponent {
 
   constructor(private appComponent: AppComponent, public dialog: MatDialog) {
     this.setCustomerToShow();
-    if (window.innerWidth < 500) {
+    if (window.innerWidth < 650) {
       this.mobile = true;
     } else {
       this.mobile = false;
@@ -70,6 +70,12 @@ export class CostumersComponent {
         this.allCostumer = costumersData;
       }
     );
+
+    if (window.innerWidth < 650) {
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
   }
   /**
    * This function is to open the dialog to add new costumer
@@ -77,4 +83,14 @@ export class CostumersComponent {
   openDialogCostumer() {
     const dialogRef = this.dialog.open(DialogaddcostumerComponent);
   }
+  
+  onResize(event) {
+    if (window.innerWidth < 650) {
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
+  }
 }
+
+
